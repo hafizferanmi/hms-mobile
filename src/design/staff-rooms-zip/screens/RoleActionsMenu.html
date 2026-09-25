@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Roles – Actions</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+:root{
+  --navy:#1E2A5E; --navy-ink:#12173A; --navy-soft:#EEF0FA;
+  --coral:#E85D4E; --coral-soft:#FDECE9;
+  --bg:#F5F6FB; --surface:#FFFFFF; --border:#E7E9F3;
+  --text:#1A1D29; --text-muted:#767C99; --text-faint:#A4A9C1;
+  --amber:#C97F04; --amber-soft:#FBF0D9;
+  --purple:#7C5CD6; --purple-soft:#F1ECFB;
+}
+body{margin:0;font-family:Inter,sans-serif;background:var(--bg);}
+input::placeholder{color:var(--text-faint);}
+.seg{flex:1;text-align:center;padding:9px 0;border-radius:9px;font-family:Inter,sans-serif;font-weight:700;font-size:13px;}
+.staffrow{display:flex;align-items:center;gap:12px;padding:13px 16px;background:var(--surface);border-radius:14px;}
+</style>
+</head>
+<body>
+<div style="width:390px;height:844px;box-sizing:border-box;background:var(--bg);display:flex;flex-direction:column;overflow:hidden;position:relative;">
+
+  <div style="flex-grow:1;display:flex;flex-direction:column;overflow:hidden;filter:brightness(0.8);">
+
+  <div style="flex-shrink:0;padding:52px 20px 14px 20px;box-sizing:border-box;background:var(--surface);">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:18px;color:var(--navy-ink);">Staff &amp; Roles</span>
+    </div>
+
+    <div style="display:flex;background:var(--bg);border-radius:11px;padding:4px;margin-top:16px;">
+      <div class="seg" style="color:var(--text-muted);">Staff</div>
+      <div class="seg" style="background:var(--navy);color:#FFFFFF;">Roles</div>
+    </div>
+  </div>
+
+  <div style="flex-grow:1;overflow-y:auto;">
+
+    <div style="padding:16px 20px 0 20px;box-sizing:border-box;">
+      <div style="position:relative;display:flex;align-items:center;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--text-faint)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;left:12px;"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input placeholder="Search roles" style="width:100%;height:42px;box-sizing:border-box;padding:0 12px 0 34px;border:1px solid var(--border);border-radius:11px;background:var(--surface);font-family:Inter,sans-serif;font-size:13px;color:var(--text);">
+      </div>
+    </div>
+
+    <div style="padding:14px 20px 100px 20px;box-sizing:border-box;display:flex;flex-direction:column;gap:10px;">
+
+      <div class="staffrow" style="align-items:flex-start;">
+        <div style="width:40px;height:40px;border-radius:11px;background:var(--navy-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--navy)"><path d="M12 2l2.9 6.2 6.8.7-5.1 4.6 1.5 6.7L12 16.9 5.9 20.2l1.5-6.7L2.3 8.9l6.8-.7z"/></svg>
+        </div>
+        <div style="flex-grow:1;min-width:0;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13.5px;color:var(--navy-ink);">Hall Manager</div>
+          <div style="font-family:Inter,sans-serif;font-size:11.5px;color:var(--text-muted);margin-top:4px;">0 staff · 4 permissions</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="1.8" style="flex-shrink:0;margin-top:2px;"><circle cx="5" cy="12" r="1.6" fill="var(--text)" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="var(--text)" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="var(--text)" stroke="none"/></svg>
+      </div>
+
+      <div class="staffrow" style="align-items:flex-start;">
+        <div style="width:40px;height:40px;border-radius:11px;background:var(--amber-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2l2.9 6.2 6.8.7-5.1 4.6 1.5 6.7L12 16.9 5.9 20.2l1.5-6.7L2.3 8.9l6.8-.7z"/></svg>
+        </div>
+        <div style="flex-grow:1;min-width:0;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13.5px;color:var(--navy-ink);">Housekeeper</div>
+          <div style="font-family:Inter,sans-serif;font-size:11px;color:var(--text-faint);margin-top:2px;">In charge of cleaning the house.</div>
+          <div style="font-family:Inter,sans-serif;font-size:11.5px;color:var(--text-muted);margin-top:4px;">0 staff · 3 permissions</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="1.8" style="flex-shrink:0;margin-top:2px;"><circle cx="5" cy="12" r="1.6" fill="var(--text)" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="var(--text)" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="var(--text)" stroke="none"/></svg>
+      </div>
+
+      <div class="staffrow" style="align-items:flex-start;">
+        <div style="width:40px;height:40px;border-radius:11px;background:var(--purple-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--purple)"><path d="M12 2l2.9 6.2 6.8.7-5.1 4.6 1.5 6.7L12 16.9 5.9 20.2l1.5-6.7L2.3 8.9l6.8-.7z"/></svg>
+        </div>
+        <div style="flex-grow:1;min-width:0;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13.5px;color:var(--navy-ink);">Management</div>
+          <div style="font-family:Inter,sans-serif;font-size:11.5px;color:var(--text-muted);margin-top:4px;">0 staff · 24 permissions</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="1.8" style="flex-shrink:0;margin-top:2px;"><circle cx="5" cy="12" r="1.6" fill="var(--text)" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="var(--text)" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="var(--text)" stroke="none"/></svg>
+      </div>
+
+      <div class="staffrow" style="align-items:flex-start;">
+        <div style="width:40px;height:40px;border-radius:11px;background:var(--coral-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--coral)"><path d="M12 2l2.9 6.2 6.8.7-5.1 4.6 1.5 6.7L12 16.9 5.9 20.2l1.5-6.7L2.3 8.9l6.8-.7z"/></svg>
+        </div>
+        <div style="flex-grow:1;min-width:0;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13.5px;color:var(--navy-ink);">Receptionist</div>
+          <div style="font-family:Inter,sans-serif;font-size:11px;color:var(--text-faint);margin-top:2px;">Welcoming guest to the hotel.</div>
+          <div style="font-family:Inter,sans-serif;font-size:11.5px;color:var(--text-muted);margin-top:4px;">1 staff · 4 permissions</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="1.8" style="flex-shrink:0;margin-top:2px;"><circle cx="5" cy="12" r="1.6" fill="var(--text)" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="var(--text)" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="var(--text)" stroke="none"/></svg>
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+
+  <div style="position:absolute;right:18px;bottom:24px;height:52px;padding:0 20px 0 18px;border-radius:26px;background:var(--navy);display:flex;align-items:center;gap:8px;box-shadow:0 12px 22px rgba(30,42,94,0.35);filter:brightness(0.8);">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+    <span style="font-family:Inter,sans-serif;font-weight:700;font-size:13.5px;color:#FFFFFF;">Add role</span>
+  </div>
+
+  <div style="position:absolute;inset:0;background:rgba(18,23,58,0.32);z-index:5;"></div>
+
+  <div style="position:absolute;left:16px;right:16px;bottom:24px;z-index:6;display:flex;flex-direction:column;gap:8px;">
+
+    <div style="background:var(--surface);border-radius:16px;overflow:hidden;">
+      <div style="padding:16px;text-align:center;border-bottom:1px solid var(--border);">
+        <span style="font-family:Inter,sans-serif;font-weight:700;font-size:13px;color:var(--text-faint);">HOUSEKEEPER</span>
+      </div>
+      <div style="padding:16px;text-align:center;border-bottom:1px solid var(--border);">
+        <span style="font-family:Inter,sans-serif;font-weight:600;font-size:16px;color:var(--navy-ink);">Edit role</span>
+      </div>
+      <div style="padding:16px;text-align:center;">
+        <span style="font-family:Inter,sans-serif;font-weight:600;font-size:16px;color:var(--navy-ink);">Duplicate role</span>
+      </div>
+    </div>
+
+    <div style="background:var(--surface);border-radius:16px;overflow:hidden;">
+      <div style="padding:16px;text-align:center;">
+        <span style="font-family:Inter,sans-serif;font-weight:700;font-size:16px;color:var(--coral);">Delete role</span>
+      </div>
+    </div>
+
+    <div style="background:var(--surface);border-radius:16px;overflow:hidden;">
+      <div style="padding:16px;text-align:center;">
+        <span style="font-family:Inter,sans-serif;font-weight:700;font-size:16px;color:var(--navy-ink);">Close</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Add Charge</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+:root{
+  --navy:#1E2A5E; --navy-ink:#12173A; --navy-soft:#EEF0FA;
+  --bg:#F5F6FB; --surface:#FFFFFF; --border:#E7E9F3;
+  --text:#1A1D29; --text-muted:#767C99; --text-faint:#A4A9C1;
+}
+body{margin:0;font-family:Inter,sans-serif;background:var(--surface);}
+input::placeholder{color:var(--text-faint);}
+.section-label{font-family:Inter,sans-serif;font-weight:700;font-size:11px;color:var(--text-faint);letter-spacing:0.6px;}
+.cat{display:flex;align-items:center;gap:9px;padding:12px;border-radius:12px;box-sizing:border-box;}
+</style>
+</head>
+<body>
+<div style="width:390px;height:844px;box-sizing:border-box;background:var(--surface);display:flex;flex-direction:column;overflow:hidden;">
+
+  <div style="flex-shrink:0;padding:52px 20px 16px 20px;box-sizing:border-box;display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid var(--border);">
+    <div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:18px;color:var(--navy-ink);">Add charge</div>
+      <div style="font-family:Inter,sans-serif;font-size:12.5px;color:var(--text-muted);margin-top:4px;">Mrs Lubowi Lubowitz · Room 123</div>
+    </div>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </div>
+
+  <div style="flex-grow:1;overflow-y:auto;padding:20px 20px 24px 20px;box-sizing:border-box;">
+
+    <span class="section-label">CATEGORY</span>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+      <div class="cat" style="border:1.4px solid var(--border);">
+        <div style="width:28px;height:28px;border-radius:8px;background:var(--navy-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18M5 10V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4"/></svg>
+        </div>
+        <span style="font-family:Inter,sans-serif;font-weight:700;font-size:13px;color:var(--navy-ink);">Room</span>
+      </div>
+      <div class="cat" style="border:1.6px solid var(--navy);background:var(--navy-soft);">
+        <div style="width:28px;height:28px;border-radius:8px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 6h6M9 10h6M9 14h3"/></svg>
+        </div>
+        <span style="font-family:Inter,sans-serif;font-weight:700;font-size:13px;color:var(--navy);">Laundry</span>
+      </div>
+      <div class="cat" style="border:1.4px solid var(--border);">
+        <div style="width:28px;height:28px;border-radius:8px;background:var(--navy-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M12 3a9 9 0 0 1 9 9M12 3a9 9 0 0 0-9 9"/></svg>
+        </div>
+        <span style="font-family:Inter,sans-serif;font-weight:700;font-size:13px;color:var(--navy-ink);">Room service</span>
+      </div>
+      <div class="cat" style="border:1.4px solid var(--border);">
+        <div style="width:28px;height:28px;border-radius:8px;background:var(--navy-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 8h4"/></svg>
+        </div>
+        <span style="font-family:Inter,sans-serif;font-weight:700;font-size:13px;color:var(--navy-ink);">Minibar</span>
+      </div>
+      <div class="cat" style="border:1.4px solid var(--border);">
+        <div style="width:28px;height:28px;border-radius:8px;background:var(--navy-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a1.5 1.5 0 0 0 1.3 2.3h17.8a1.5 1.5 0 0 0 1.3-2.3L13.7 3.9a1.5 1.5 0 0 0-2.6 0z"/><path d="M12 9v4M12 16.5v.1"/></svg>
+        </div>
+        <span style="font-family:Inter,sans-serif;font-weight:700;font-size:13px;color:var(--navy-ink);">Penalty</span>
+      </div>
+      <div class="cat" style="border:1.4px solid var(--border);">
+        <div style="width:28px;height:28px;border-radius:8px;background:var(--navy-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5a2.5 2.5 0 0 1 2.5-1c1.4 0 2.5.7 2.5 2s-1.1 1.5-2.5 2c-1.4.5-2.5.7-2.5 2s1.1 2 2.5 2a2.5 2.5 0 0 0 2.5-1"/></svg>
+        </div>
+        <span style="font-family:Inter,sans-serif;font-weight:700;font-size:13px;color:var(--navy-ink);">Commission</span>
+      </div>
+      <div class="cat" style="border:1.4px solid var(--border);">
+        <div style="width:28px;height:28px;border-radius:8px;background:var(--navy-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1.4" fill="var(--navy)" stroke="none"/><circle cx="12" cy="12" r="1.4" fill="var(--navy)" stroke="none"/><circle cx="19" cy="12" r="1.4" fill="var(--navy)" stroke="none"/></svg>
+        </div>
+        <span style="font-family:Inter,sans-serif;font-weight:700;font-size:13px;color:var(--navy-ink);">Other</span>
+      </div>
+    </div>
+
+    <div style="margin-top:22px;">
+      <span class="section-label">DESCRIPTION</span>
+      <input placeholder="e.g. Laundry service — 3 items" style="margin-top:8px;width:100%;height:46px;box-sizing:border-box;padding:0 14px;border:1px solid var(--border);border-radius:11px;font-family:Inter,sans-serif;font-size:13.5px;color:var(--text);">
+    </div>
+
+    <div style="margin-top:18px;">
+      <span class="section-label">AMOUNT</span>
+      <div style="margin-top:8px;display:flex;align-items:center;border:1px solid var(--border);border-radius:11px;padding:0 14px;height:48px;">
+        <span style="font-family:Inter,sans-serif;font-weight:700;font-size:14px;color:var(--text-muted);">NGN</span>
+        <input placeholder="0.00" style="border:none;outline:none;flex-grow:1;height:100%;padding-left:8px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;color:var(--navy-ink);">
+      </div>
+    </div>
+
+    <div style="margin-top:18px;">
+      <span class="section-label">NOTE <span style="color:var(--text-faint);font-weight:500;text-transform:none;letter-spacing:0;">optional</span></span>
+      <div style="margin-top:8px;width:100%;height:72px;box-sizing:border-box;padding:12px 14px;border:1px solid var(--border);border-radius:11px;">
+        <span style="font-family:Inter,sans-serif;font-size:13.5px;color:var(--text-faint);">Any other details</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="flex-shrink:0;display:flex;gap:10px;padding:14px 20px 28px 20px;box-sizing:border-box;border-top:1px solid var(--border);">
+    <div style="flex:1;height:48px;border:1px solid var(--border);border-radius:11px;display:flex;align-items:center;justify-content:center;">
+      <span style="font-family:Inter,sans-serif;font-weight:700;font-size:14px;color:var(--navy-ink);">Cancel</span>
+    </div>
+    <div style="flex:1.4;height:48px;background:var(--navy-soft);border-radius:11px;display:flex;align-items:center;justify-content:center;">
+      <span style="font-family:Inter,sans-serif;font-weight:700;font-size:14px;color:var(--text-faint);">Add charge</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

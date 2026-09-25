@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Rooms</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+:root{
+  --navy:#1E2A5E; --navy-ink:#12173A; --navy-soft:#EEF0FA;
+  --coral:#E85D4E; --coral-soft:#FDECE9;
+  --bg:#F5F6FB; --surface:#FFFFFF; --border:#E7E9F3;
+  --text:#1A1D29; --text-muted:#767C99; --text-faint:#A4A9C1;
+}
+body{margin:0;font-family:Inter,sans-serif;background:var(--bg);}
+input::placeholder{color:var(--text-faint);}
+.typerow{display:flex;align-items:center;gap:12px;padding:13px 16px;background:var(--surface);border-radius:14px;}
+</style>
+</head>
+<body>
+<div style="width:390px;height:844px;box-sizing:border-box;background:var(--bg);display:flex;flex-direction:column;overflow:hidden;position:relative;">
+
+  <div style="flex-shrink:0;padding:52px 20px 14px 20px;box-sizing:border-box;background:var(--surface);display:flex;align-items:center;gap:12px;">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    <div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:18px;color:var(--navy-ink);">Rooms</div>
+      <div style="font-family:Inter,sans-serif;font-size:11.5px;color:var(--text-muted);margin-top:1px;">8 room types · 57 rooms</div>
+    </div>
+  </div>
+
+  <div style="flex-grow:1;overflow-y:auto;">
+
+    <div style="padding:16px 20px 0 20px;box-sizing:border-box;">
+      <div style="position:relative;display:flex;align-items:center;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--text-faint)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;left:12px;"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input placeholder="Search room types" style="width:100%;height:42px;box-sizing:border-box;padding:0 12px 0 34px;border:1px solid var(--border);border-radius:11px;background:var(--surface);font-family:Inter,sans-serif;font-size:13px;color:var(--text);">
+      </div>
+    </div>
+
+    <div style="padding:14px 20px 100px 20px;box-sizing:border-box;display:flex;flex-direction:column;gap:10px;">
+
+      <div class="typerow" style="border:1.6px solid var(--navy);">
+        <div style="width:42px;height:42px;border-radius:11px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18M5 10V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4"/></svg>
+        </div>
+        <div style="flex-grow:1;min-width:0;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13.5px;color:var(--navy-ink);">Royal Suite</div>
+          <div style="font-family:Inter,sans-serif;font-size:11.5px;color:var(--text-muted);margin-top:3px;">4 rooms · sleeps 3</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13.5px;color:var(--coral);">NGN 40,000</div>
+          <div style="font-family:Inter,sans-serif;font-size:9px;color:var(--text-faint);">PER NIGHT</div>
+        </div>
+      </div>
+
+      <div class="typerow">
+        <div style="width:42px;height:42px;border-radius:11px;background:var(--navy-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18M5 10V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4"/></svg>
+        </div>
+        <div style="flex-grow:1;min-width:0;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13.5px;color:var(--navy-ink);">Luxury Double</div>
+          <div style="font-family:Inter,sans-serif;font-size:11.5px;color:var(--text-muted);margin-top:3px;">7 rooms · sleeps 4</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13.5px;color:var(--coral);">NGN 25,000</div>
+          <div style="font-family:Inter,sans-serif;font-size:9px;color:var(--text-faint);">PER NIGHT</div>
+        </div>
+      </div>
+
+      <div class="typerow">
+        <div style="width:42px;height:42px;border-radius:11px;background:var(--navy-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18M5 10V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4"/></svg>
+        </div>
+        <div style="flex-grow:1;min-width:0;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13.5px;color:var(--navy-ink);">Executive Premier</div>
+          <div style="font-family:Inter,sans-serif;font-size:11.5px;color:var(--text-muted);margin-top:3px;">13 rooms · sleeps 6</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13.5px;color:var(--coral);">NGN 11,500</div>
+          <div style="font-family:Inter,sans-serif;font-size:9px;color:var(--text-faint);">PER NIGHT</div>
+        </div>
+      </div>
+
+      <div class="typerow">
+        <div style="width:42px;height:42px;border-radius:11px;background:var(--navy-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18M5 10V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4"/></svg>
+        </div>
+        <div style="flex-grow:1;min-width:0;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13.5px;color:var(--navy-ink);">Standard Single</div>
+          <div style="font-family:Inter,sans-serif;font-size:11.5px;color:var(--text-muted);margin-top:3px;">5 rooms · sleeps 1</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13.5px;color:var(--coral);">NGN 15,000</div>
+          <div style="font-family:Inter,sans-serif;font-size:9px;color:var(--text-faint);">PER NIGHT</div>
+        </div>
+      </div>
+
+      <div class="typerow">
+        <div style="width:42px;height:42px;border-radius:11px;background:var(--navy-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18M5 10V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4"/></svg>
+        </div>
+        <div style="flex-grow:1;min-width:0;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13.5px;color:var(--navy-ink);">Presidential Suite</div>
+          <div style="font-family:Inter,sans-serif;font-size:11.5px;color:var(--text-muted);margin-top:3px;">15 rooms · sleeps 4</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13.5px;color:var(--coral);">NGN 60k–110k</div>
+          <div style="font-family:Inter,sans-serif;font-size:9px;color:var(--text-faint);">RANGE</div>
+        </div>
+      </div>
+
+      <div class="typerow">
+        <div style="width:42px;height:42px;border-radius:11px;background:var(--navy-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18M5 10V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4"/></svg>
+        </div>
+        <div style="flex-grow:1;min-width:0;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13.5px;color:var(--navy-ink);">Annex</div>
+          <div style="font-family:Inter,sans-serif;font-size:11.5px;color:var(--text-muted);margin-top:3px;">2 rooms · sleeps 1</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13.5px;color:var(--coral);">NGN 6,000</div>
+          <div style="font-family:Inter,sans-serif;font-size:9px;color:var(--text-faint);">PER NIGHT</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div style="position:absolute;right:18px;bottom:24px;height:52px;padding:0 20px 0 18px;border-radius:26px;background:var(--navy);display:flex;align-items:center;gap:8px;box-shadow:0 12px 22px rgba(30,42,94,0.35);">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+    <span style="font-family:Inter,sans-serif;font-weight:700;font-size:13.5px;color:#FFFFFF;">Add room type</span>
+  </div>
+
+</div>
+</body>
+</html>

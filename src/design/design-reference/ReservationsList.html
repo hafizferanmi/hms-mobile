@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Reservations List</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+:root{
+  --navy:#1E2A5E; --navy-ink:#12173A; --navy-soft:#EEF0FA;
+  --bg:#F5F6FB; --surface:#FFFFFF; --border:#E7E9F3;
+  --text:#1A1D29; --text-muted:#767C99; --text-faint:#A4A9C1;
+  --success:#1E9E6B; --success-soft:#E4F8EF;
+  --amber:#C97F04; --amber-soft:#FBF0D9;
+}
+body{margin:0;font-family:Inter,sans-serif;background:var(--surface);}
+input::placeholder{color:var(--text-faint);}
+.pill{border-radius:999px;padding:4px 11px;font-family:Inter,sans-serif;font-weight:700;font-size:10.5px;white-space:nowrap;}
+.row{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border);}
+</style>
+</head>
+<body>
+<div style="width:390px;height:844px;box-sizing:border-box;background:var(--surface);display:flex;flex-direction:column;overflow:hidden;">
+
+  <div style="padding:52px 20px 12px 20px;box-sizing:border-box;display:flex;align-items:center;gap:12px;flex-shrink:0;">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:17px;color:var(--navy-ink);">Reservations</span>
+  </div>
+
+  <div style="padding:0 20px 14px 20px;box-sizing:border-box;flex-shrink:0;">
+    <div style="position:relative;display:flex;align-items:center;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-faint)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;left:13px;"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input placeholder="Search guest, room or res. no." style="width:100%;height:42px;box-sizing:border-box;padding:0 12px 0 38px;border:none;border-radius:11px;background:var(--bg);font-family:Inter,sans-serif;font-size:13.5px;color:var(--text);">
+    </div>
+  </div>
+
+  <div style="padding:0 20px 14px 20px;box-sizing:border-box;display:flex;align-items:center;gap:14px;flex-shrink:0;">
+    <div style="display:flex;align-items:center;gap:5px;">
+      <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14.5px;color:var(--navy-ink);">Today</span>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--navy-ink)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div style="width:1px;height:16px;background:var(--border);"></div>
+    <div style="display:flex;align-items:center;gap:5px;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16l-6 8v6l-4-2v-4z"/></svg>
+      <span style="font-family:Inter,sans-serif;font-weight:600;font-size:13.5px;color:var(--text-muted);">Filter</span>
+    </div>
+  </div>
+
+  <div style="flex-grow:1;overflow-y:auto;">
+
+    <div class="row">
+      <div style="display:flex;flex-direction:column;gap:3px;">
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14.5px;color:var(--navy-ink);">Mr Kian Wilkinson</span>
+        <span style="font-family:Inter,sans-serif;font-size:12.5px;color:var(--text-muted);">Room 604 · Arrived 21 Sep, 2026</span>
+      </div>
+      <span class="pill" style="background:var(--amber-soft);color:var(--amber);">RESERVED</span>
+    </div>
+
+    <div class="row">
+      <div style="display:flex;flex-direction:column;gap:3px;">
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14.5px;color:var(--navy-ink);">Mrs Lubowi Lubowitz</span>
+        <span style="font-family:Inter,sans-serif;font-size:12.5px;color:var(--text-muted);">Room 123 · Arrived 21 Sep, 2026</span>
+      </div>
+      <span class="pill" style="background:var(--amber-soft);color:var(--amber);">RESERVED</span>
+    </div>
+
+    <div class="row">
+      <div style="display:flex;flex-direction:column;gap:3px;">
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14.5px;color:var(--navy-ink);">Miss Micaela Schuppe</span>
+        <span style="font-family:Inter,sans-serif;font-size:12.5px;color:var(--text-muted);">Room 101 · Arrived 21 Sep, 2026</span>
+      </div>
+      <span class="pill" style="background:var(--amber-soft);color:var(--amber);">RESERVED</span>
+    </div>
+
+    <div class="row" style="border-bottom:none;">
+      <div style="display:flex;flex-direction:column;gap:3px;">
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14.5px;color:var(--navy-ink);">Mrs Julian Mertz</span>
+        <span style="font-family:Inter,sans-serif;font-size:12.5px;color:var(--text-muted);">Room 34q · Arrived 01 Sep, 2026</span>
+      </div>
+      <span class="pill" style="background:var(--success-soft);color:var(--success);">IN HOUSE</span>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>

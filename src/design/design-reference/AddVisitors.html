@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Add Visitors</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+:root{
+  --navy:#1E2A5E; --navy-ink:#12173A; --navy-soft:#EEF0FA;
+  --bg:#F5F6FB; --surface:#FFFFFF; --border:#E7E9F3;
+  --text:#1A1D29; --text-muted:#767C99; --text-faint:#A4A9C1;
+}
+body{margin:0;font-family:Inter,sans-serif;background:var(--surface);}
+input::placeholder{color:var(--text-faint);}
+.field-label{font-family:Inter,sans-serif;font-weight:700;font-size:10px;color:var(--text-faint);letter-spacing:0.5px;}
+</style>
+</head>
+<body>
+<div style="width:390px;height:844px;box-sizing:border-box;background:var(--surface);display:flex;flex-direction:column;overflow:hidden;">
+
+  <div style="flex-shrink:0;padding:52px 20px 16px 20px;box-sizing:border-box;display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid var(--border);">
+    <div style="display:flex;gap:12px;align-items:flex-start;">
+      <div style="width:36px;height:36px;border-radius:10px;background:var(--navy-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>
+      </div>
+      <div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:17px;color:var(--navy-ink);">Add visitor(s)</div>
+        <div style="font-family:Inter,sans-serif;font-size:12px;color:var(--text-muted);margin-top:3px;">Add extra guests staying alongside the primary guest</div>
+      </div>
+    </div>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </div>
+
+  <div style="flex-grow:1;overflow-y:auto;padding:20px 20px 24px 20px;box-sizing:border-box;">
+
+    <div style="display:flex;align-items:center;gap:8px;background:var(--navy-soft);border-radius:999px;padding:7px 14px 7px 7px;align-self:flex-start;">
+      <div style="width:22px;height:22px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <span style="font-family:Inter,sans-serif;font-weight:700;font-size:9px;color:#FFFFFF;">LL</span>
+      </div>
+      <span style="font-family:Inter,sans-serif;font-weight:700;font-size:12px;color:var(--navy);">Adding to Mrs Lubowi Lubowitz's stay · Room 123</span>
+    </div>
+
+    <div style="margin-top:18px;border:1px solid var(--border);border-radius:16px;padding:16px;box-sizing:border-box;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:28px;height:28px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <span style="font-family:Inter,sans-serif;font-weight:700;font-size:12px;color:var(--text-faint);">?</span>
+        </div>
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;color:var(--navy-ink);">Visitor 1</span>
+      </div>
+
+      <div style="margin-top:16px;display:flex;flex-direction:column;gap:12px;">
+        <div>
+          <div class="field-label">TITLE</div>
+          <div style="margin-top:6px;display:flex;align-items:center;justify-content:space-between;height:44px;border:1px solid var(--border);border-radius:10px;padding:0 12px;">
+            <span style="font-family:Inter,sans-serif;font-size:14px;color:var(--text-faint);">Title</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--text-faint)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div>
+          <div class="field-label">FIRST NAME</div>
+          <input placeholder="First name" style="margin-top:6px;width:100%;height:44px;box-sizing:border-box;padding:0 12px;border:1px solid var(--border);border-radius:10px;font-family:Inter,sans-serif;font-size:14px;color:var(--text);">
+        </div>
+        <div>
+          <div class="field-label">LAST NAME</div>
+          <input placeholder="Last name" style="margin-top:6px;width:100%;height:44px;box-sizing:border-box;padding:0 12px;border:1px solid var(--border);border-radius:10px;font-family:Inter,sans-serif;font-size:14px;color:var(--text);">
+        </div>
+        <div>
+          <div class="field-label">GUEST EMAIL</div>
+          <input placeholder="Guest email" style="margin-top:6px;width:100%;height:44px;box-sizing:border-box;padding:0 12px;border:1px solid var(--border);border-radius:10px;font-family:Inter,sans-serif;font-size:14px;color:var(--text);">
+        </div>
+        <div>
+          <div class="field-label">GUEST PHONE NO.</div>
+          <input placeholder="Guest phone no." style="margin-top:6px;width:100%;height:44px;box-sizing:border-box;padding:0 12px;border:1px solid var(--border);border-radius:10px;font-family:Inter,sans-serif;font-size:14px;color:var(--text);">
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:14px;border:1.4px dashed var(--border);border-radius:13px;height:50px;display:flex;align-items:center;justify-content:center;gap:8px;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+      <span style="font-family:Inter,sans-serif;font-weight:700;font-size:13.5px;color:var(--navy);">Add another visitor</span>
+    </div>
+
+  </div>
+
+  <div style="flex-shrink:0;padding:12px 20px 28px 20px;box-sizing:border-box;border-top:1px solid var(--border);">
+    <div style="text-align:center;font-family:Inter,sans-serif;font-size:12.5px;color:var(--text-muted);margin-bottom:10px;">1 visitor</div>
+    <div style="display:flex;gap:10px;">
+      <div style="flex:1;height:48px;border:1px solid var(--border);border-radius:11px;display:flex;align-items:center;justify-content:center;">
+        <span style="font-family:Inter,sans-serif;font-weight:700;font-size:14px;color:var(--navy-ink);">Cancel</span>
+      </div>
+      <div style="flex:1.4;height:48px;background:var(--navy);border-radius:11px;display:flex;align-items:center;justify-content:center;gap:7px;box-shadow:0 8px 16px rgba(30,42,94,0.24);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        <span style="font-family:Inter,sans-serif;font-weight:700;font-size:14px;color:#FFFFFF;">Add visitor</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
