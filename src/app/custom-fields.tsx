@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { router } from 'expo-router';
 import { useState } from 'react';
-import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Pressable, RefreshControl, StyleSheet, Text, View } from 'react-native';
 import ReorderableList, { reorderItems, useReorderableDrag, type ReorderableListReorderEvent } from 'react-native-reorderable-list';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Path } from 'react-native-svg';
@@ -165,7 +165,7 @@ export default function CustomFieldsScreen() {
   const [menuError, setMenuError] = useState<string | undefined>();
 
   const queryClient = useQueryClient();
-  const { data: fields, isLoading, isError, error } = useCustomFields(tab);
+  const { data: fields, isLoading, isError, error, refetch, isRefetching } = useCustomFields(tab);
 
   // A local, drag-reorderable copy of the list — ReorderableList animates
   // drags against whatever array it's given, so the visual order needs to
@@ -243,6 +243,7 @@ export default function CustomFieldsScreen() {
           style={styles.list}
           contentContainerStyle={styles.body}
           showsVerticalScrollIndicator={false}
+          refreshControl={<RefreshControl refreshing={isRefetching} onRefresh={refetch} tintColor={colors.navy} />}
           ListHeaderComponent={
             tab === 'REVIEW' ? (
               <View style={styles.tipCard}>

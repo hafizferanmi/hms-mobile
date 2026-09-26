@@ -395,7 +395,7 @@ export default function HomeScreen() {
               icon={<HousekeepingIcon color={colors.amber} />}
               chipColor={colors.amberSoft}
               label="Housekeeping"
-              onPress={() => {}}
+              onPress={() => router.push('/housekeeping')}
             />
             <QuickActionTile
               icon={<AvailabilityIcon color={colors.coral} />}

@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
-import { ActivityIndicator, Alert, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Alert, Pressable, RefreshControl, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Svg, { Circle, Path, Rect } from 'react-native-svg';
 
 import { deleteRoom, deleteRoomType, roomTypePrice, type RoomDto } from '@/api/rooms';
@@ -169,7 +169,7 @@ function RoomActionsMenu({
 export default function RoomTypeDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const queryClient = useQueryClient();
-  const { data, isLoading, isError, error } = useRoomTypeDetail(id);
+  const { data, isLoading, isError, error, refetch, isRefetching } = useRoomTypeDetail(id);
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuError, setMenuError] = useState<string | undefined>();
   const [activeRoomMenu, setActiveRoomMenu] = useState<RoomDto | null>(null);
@@ -247,7 +247,10 @@ export default function RoomTypeDetailScreen() {
         </View>
       </View>
 
-      <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        contentContainerStyle={styles.body}
+        showsVerticalScrollIndicator={false}
+        refreshControl={<RefreshControl refreshing={isRefetching} onRefresh={refetch} tintColor={colors.navy} />}>
         <View style={styles.statsRow}>
           <View style={[styles.statCell, styles.statCellDivider]}>
             <Text style={styles.statLabel}>ROOMS</Text>

@@ -7,6 +7,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   Pressable,
+  RefreshControl,
   ScrollView,
   StyleSheet,
   Text,
@@ -538,11 +539,18 @@ export default function ReservationDetailScreen() {
   const [moreMenuOpen, setMoreMenuOpen] = useState(false);
   const [confirmAction, setConfirmAction] = useState<ConfirmActionKind | null>(null);
   const queryClient = useQueryClient();
-  const { data: reservations, isLoading } = useReservations();
+  const { data: reservations, isLoading, refetch: refetchReservations } = useReservations();
   const reservation = reservations?.find((r) => r.id === id);
   const folioState = useReservationFolio(id);
   const activityState = useReservationActivity(id);
-  const { data: customFieldDefs } = useCustomFields('RESERVATION');
+  const { data: customFieldDefs, refetch: refetchCustomFields } = useCustomFields('RESERVATION');
+  const [refreshing, setRefreshing] = useState(false);
+
+  async function onRefresh() {
+    setRefreshing(true);
+    await Promise.all([refetchReservations(), folioState.refetch(), activityState.refetch(), refetchCustomFields()]);
+    setRefreshing(false);
+  }
 
   // Both just refetch the shared ['reservations'] query on success rather
   // than trying to merge their own response into it — checkIn()/checkOut()
@@ -699,7 +707,13 @@ export default function ReservationDetailScreen() {
         ))}
       </View>
 
-      <ScrollView style={styles.body} contentContainerStyle={styles.bodyContent} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        style={styles.body}
+        contentContainerStyle={styles.bodyContent}
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={colors.navy} colors={[colors.navy]} />
+        }>
         {tab === 'guest' && (
           <>
             <View style={styles.contactCard}>

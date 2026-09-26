@@ -50,6 +50,16 @@ function ReviewsIcon({ color }: { color: string }) {
   );
 }
 
+function GuestsIcon({ color }: { color: string }) {
+  return (
+    <Svg width={22} height={22} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <Circle cx={9} cy={8} r={3.5} />
+      <Path d="M2 20c0-3.6 3.1-6 7-6s7 2.4 7 6" />
+      <Path d="M16.5 8a3 3 0 1 1 3.6 4.4M22 20c0-2.6-1.8-4.6-4.5-5.4" />
+    </Svg>
+  );
+}
+
 type MoreTile = {
   key: string;
   label: string;
@@ -60,6 +70,14 @@ type MoreTile = {
 };
 
 const MORE_TILES: MoreTile[] = [
+  {
+    key: 'guests',
+    label: 'Guest List',
+    chipColor: colors.purpleSoft,
+    iconColor: colors.purple,
+    icon: (color) => <GuestsIcon color={color} />,
+    onPress: () => router.push('/guests'),
+  },
   {
     key: 'lost-and-found',
     label: 'Lost & Found',

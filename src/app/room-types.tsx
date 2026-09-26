@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { ActivityIndicator, Pressable, RefreshControl, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Path } from 'react-native-svg';
 
@@ -80,7 +80,7 @@ function RoomTypeRow({ roomType, roomCount, onPress }: { roomType: RoomTypeDto; 
 export default function RoomTypesScreen() {
   const insets = useSafeAreaInsets();
   const [search, setSearch] = useState('');
-  const { data: roomTypes, isLoading, isError, error } = useRoomTypes();
+  const { data: roomTypes, isLoading, isError, error, refetch, isRefetching } = useRoomTypes();
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -101,7 +101,10 @@ export default function RoomTypesScreen() {
         </View>
       </View>
 
-      <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        contentContainerStyle={styles.body}
+        showsVerticalScrollIndicator={false}
+        refreshControl={<RefreshControl refreshing={isRefetching} onRefresh={refetch} tintColor={colors.navy} />}>
         <View style={styles.searchWrap}>
           <View style={styles.searchIconWrap}>
             <SearchIcon />

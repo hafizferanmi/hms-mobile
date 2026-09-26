@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { router } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { ActivityIndicator, Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { ActivityIndicator, Alert, Pressable, RefreshControl, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Path } from 'react-native-svg';
 
@@ -251,8 +251,27 @@ export default function StaffRolesScreen() {
   const [menuError, setMenuError] = useState<string | undefined>();
 
   const queryClient = useQueryClient();
-  const { data: staff, isLoading: staffLoading, isError: staffError, error: staffErrorObj } = useStaff();
-  const { data: roles, isLoading: rolesLoading, isError: rolesError, error: rolesErrorObj } = useRoles();
+  const {
+    data: staff,
+    isLoading: staffLoading,
+    isError: staffError,
+    error: staffErrorObj,
+    refetch: refetchStaff,
+  } = useStaff();
+  const {
+    data: roles,
+    isLoading: rolesLoading,
+    isError: rolesError,
+    error: rolesErrorObj,
+    refetch: refetchRoles,
+  } = useRoles();
+  const [refreshing, setRefreshing] = useState(false);
+
+  async function onRefresh() {
+    setRefreshing(true);
+    await Promise.all([refetchStaff(), refetchRoles()]);
+    setRefreshing(false);
+  }
 
   const toggleDisabledMutation = useMutation({
     mutationFn: (s: StaffDto) => setStaffDisabled(s._id, !s.disabled),
@@ -357,7 +376,12 @@ export default function StaffRolesScreen() {
         </View>
       </View>
 
-      <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        contentContainerStyle={styles.body}
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={colors.navy} colors={[colors.navy]} />
+        }>
         <View style={styles.searchWrap}>
           <View style={styles.searchIconWrap}>
             <SearchIcon />

@@ -19,7 +19,10 @@ import { apiGet, apiPost, apiPut } from './client';
 // every screen that needs a single reservation.
 export type CheckInType = 'RESERVED' | 'CHECKEDIN' | 'CHECKEDOUT' | 'CANCELED';
 
-const CHECKIN_TYPE_TO_STATUS: Record<CheckInType, ReservationStatus> = {
+// Exported for guests.ts — a guest profile's `latestStatus` from
+// GET /guest-profiles is the same raw CheckInType, needing the same
+// RESERVED/CHECKEDIN/CHECKEDOUT -> ReservationStatus mapping as here.
+export const CHECKIN_TYPE_TO_STATUS: Record<CheckInType, ReservationStatus> = {
   RESERVED: 'RESERVED',
   CHECKEDIN: 'IN_HOUSE',
   CHECKEDOUT: 'CHECKED_OUT',

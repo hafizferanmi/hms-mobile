@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Add Tag</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+:root{
+  --navy:#1E2A5E; --navy-ink:#12173A; --navy-soft:#EEF0FA;
+  --bg:#F5F6FB; --surface:#FFFFFF; --border:#E7E9F3;
+  --text:#1A1D29; --text-muted:#767C99; --text-faint:#A4A9C1;
+  --success:#1E9E6B; --success-soft:#E4F8EF;
+  --purple:#7C5CD6;
+}
+body{margin:0;font-family:Inter,sans-serif;background:var(--surface);}
+.iconbtn{width:36px;height:36px;border-radius:10px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.tagpill{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:6px 11px;font-family:Inter,sans-serif;font-weight:700;font-size:11.5px;}
+.field-label{font-family:Inter,sans-serif;font-weight:700;font-size:10px;color:var(--text-faint);letter-spacing:0.5px;}
+.section-label{font-family:Inter,sans-serif;font-weight:700;font-size:11px;color:var(--text-faint);letter-spacing:0.6px;}
+</style>
+</head>
+<body>
+<div style="width:390px;height:844px;box-sizing:border-box;background:var(--surface);display:flex;flex-direction:column;overflow:hidden;position:relative;">
+
+  <div style="flex-grow:1;display:flex;flex-direction:column;overflow:hidden;filter:brightness(0.82);">
+
+  <div style="flex-shrink:0;padding:52px 20px 0 20px;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    <div style="display:flex;gap:8px;">
+      <div class="iconbtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <div class="iconbtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="1.8"><circle cx="5" cy="12" r="1.6" fill="var(--text)" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="var(--text)" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="var(--text)" stroke="none"/></svg></div>
+    </div>
+  </div>
+
+  <div style="padding:16px 20px 0 20px;box-sizing:border-box;display:flex;align-items:center;gap:12px;">
+    <div style="width:52px;height:52px;border-radius:50%;background:var(--navy-soft);border:2.4px solid var(--success);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+      <span style="font-family:Inter,sans-serif;font-weight:700;font-size:15px;color:var(--navy);">AC</span>
+    </div>
+    <div style="min-width:0;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:18px;color:var(--navy-ink);">Amara Chukwu</span>
+        <span style="background:var(--success-soft);color:var(--success);border-radius:999px;padding:3px 9px;font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;">IN HOUSE</span>
+      </div>
+      <div style="font-family:Inter,sans-serif;font-size:12px;color:var(--text-muted);margin-top:3px;">amara.chukwu@email.com · +234 803 555 1122</div>
+    </div>
+  </div>
+
+  <div style="flex-grow:1;overflow-y:auto;padding:20px 20px 24px 20px;box-sizing:border-box;">
+
+    <span class="section-label">TAGS</span>
+    <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">
+      <span class="tagpill" style="background:var(--success-soft);color:var(--success);">VIP <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+      <span class="tagpill" style="background:var(--success-soft);color:var(--success);">Repeat Guest <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+      <span class="tagpill" style="background:var(--surface);border:1.4px dashed var(--border);color:var(--navy);">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        Add tag
+      </span>
+    </div>
+
+    <div style="display:flex;background:var(--bg);border-radius:16px;overflow:hidden;margin-top:20px;">
+      <div style="flex:1.3;padding:14px 8px;text-align:center;border-right:1px solid var(--border);">
+        <div class="field-label">TOTAL SPEND</div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:14px;color:var(--navy-ink);margin-top:5px;">₦482,000</div>
+      </div>
+      <div style="flex:1;padding:14px 8px;text-align:center;border-right:1px solid var(--border);">
+        <div class="field-label">STAYS</div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:14px;color:var(--navy-ink);margin-top:5px;">6</div>
+      </div>
+      <div style="flex:1;padding:14px 8px;text-align:center;">
+        <div class="field-label">SINCE</div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:14px;color:var(--navy-ink);margin-top:5px;">2023</div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;">
+      <span class="section-label">RESERVATION HISTORY</span>
+      <div style="margin-top:12px;position:relative;">
+        <div style="position:absolute;left:5px;top:6px;bottom:6px;width:1.4px;background:var(--border);"></div>
+
+        <div style="display:flex;gap:14px;padding-bottom:18px;position:relative;">
+          <div style="width:11px;height:11px;border-radius:50%;background:var(--success);border:2px solid var(--surface);flex-shrink:0;margin-top:2px;z-index:1;"></div>
+          <div style="flex-grow:1;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;">
+            <div>
+              <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;color:var(--navy-ink);">12–15 Sep 2026</div>
+              <div style="font-family:Inter,sans-serif;font-size:11.5px;color:var(--text-muted);margin-top:2px;">302 · Deluxe King</div>
+            </div>
+            <div style="text-align:right;flex-shrink:0;">
+              <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13px;color:var(--navy-ink);">₦86,400</div>
+              <div style="font-family:Inter,sans-serif;font-size:10.5px;color:var(--text-faint);margin-top:2px;">Completed</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;padding-bottom:18px;position:relative;">
+          <div style="width:11px;height:11px;border-radius:50%;background:var(--success);border:2px solid var(--surface);flex-shrink:0;margin-top:2px;z-index:1;"></div>
+          <div style="flex-grow:1;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;">
+            <div>
+              <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;color:var(--navy-ink);">02–05 Jun 2026</div>
+              <div style="font-family:Inter,sans-serif;font-size:11.5px;color:var(--text-muted);margin-top:2px;">204 · Standard Twin</div>
+            </div>
+            <div style="text-align:right;flex-shrink:0;">
+              <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13px;color:var(--navy-ink);">₦54,200</div>
+              <div style="font-family:Inter,sans-serif;font-size:10.5px;color:var(--text-faint);margin-top:2px;">Completed</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;position:relative;">
+          <div style="width:11px;height:11px;border-radius:50%;background:var(--success);border:2px solid var(--surface);flex-shrink:0;margin-top:2px;z-index:1;"></div>
+          <div style="flex-grow:1;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;">
+            <div>
+              <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;color:var(--navy-ink);">18–21 Jan 2026</div>
+              <div style="font-family:Inter,sans-serif;font-size:11.5px;color:var(--text-muted);margin-top:2px;">302 · Deluxe King</div>
+            </div>
+            <div style="text-align:right;flex-shrink:0;">
+              <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13px;color:var(--navy-ink);">₦79,800</div>
+              <div style="font-family:Inter,sans-serif;font-size:10.5px;color:var(--text-faint);margin-top:2px;">Completed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;">
+      <span class="section-label">NOTES &amp; STORY</span>
+      <div style="margin-top:10px;background:var(--bg);border-radius:14px;padding:14px;">
+        <span style="font-family:Inter,sans-serif;font-size:12.5px;color:var(--text-muted);line-height:1.6;">Prefers a high floor and a quiet room away from the elevator. Allergic to feathers — always requests synthetic pillows.</span>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+  <div style="position:absolute;inset:0;background:rgba(18,23,58,0.32);z-index:5;"></div>
+
+  <div style="position:absolute;left:0;right:0;bottom:0;background:var(--surface);border-radius:24px 24px 0 0;box-shadow:0 -10px 32px rgba(18,23,58,0.2);z-index:6;box-sizing:border-box;padding:10px 20px 28px 20px;max-height:640px;display:flex;flex-direction:column;">
+
+    <div style="display:flex;justify-content:center;padding:6px 0 14px 0;flex-shrink:0;">
+      <div style="width:38px;height:4px;border-radius:2px;background:var(--border);"></div>
+    </div>
+
+    <div style="flex-shrink:0;position:relative;display:flex;align-items:center;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--text-faint)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;left:12px;"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input placeholder="Search tags..." style="width:100%;height:44px;box-sizing:border-box;padding:0 12px 0 34px;border:1px solid var(--border);border-radius:11px;font-family:Inter,sans-serif;font-size:14px;color:var(--text);">
+    </div>
+
+    <div style="flex-grow:1;overflow-y:auto;margin-top:16px;">
+
+      <span class="section-label">STATUS</span>
+      <div style="display:flex;flex-direction:column;margin-top:8px;">
+        <div style="display:flex;align-items:center;gap:10px;padding:11px 4px;">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--success);flex-shrink:0;"></span>
+          <span style="font-family:Inter,sans-serif;font-weight:700;font-size:14px;color:var(--navy-ink);">Loyalty Member</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:11px 4px;">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--success);flex-shrink:0;"></span>
+          <span style="font-family:Inter,sans-serif;font-weight:700;font-size:14px;color:var(--navy-ink);">Corporate Account</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:11px 4px;">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--success);flex-shrink:0;"></span>
+          <span style="font-family:Inter,sans-serif;font-weight:700;font-size:14px;color:var(--navy-ink);">High Spender</span>
+        </div>
+      </div>
+
+      <span class="section-label" style="margin-top:16px;display:block;">PREFERENCES</span>
+      <div style="display:flex;flex-direction:column;margin-top:8px;">
+        <div style="display:flex;align-items:center;gap:10px;padding:11px 4px;">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--purple);flex-shrink:0;"></span>
+          <span style="font-family:Inter,sans-serif;font-weight:700;font-size:14px;color:var(--navy-ink);">High Floor</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:11px 4px;">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--purple);flex-shrink:0;"></span>
+          <span style="font-family:Inter,sans-serif;font-weight:700;font-size:14px;color:var(--navy-ink);">Quiet Room</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:11px 4px;">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--purple);flex-shrink:0;"></span>
+          <span style="font-family:Inter,sans-serif;font-weight:700;font-size:14px;color:var(--navy-ink);">Late Checkout</span>
+        </div>
+      </div>
+
+      <div style="height:1px;background:var(--border);margin:12px 0;"></div>
+
+      <div style="display:flex;align-items:center;gap:8px;padding:11px 4px 4px 4px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        <span style="font-family:Inter,sans-serif;font-weight:700;font-size:14px;color:var(--navy);">Create a new tag</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>

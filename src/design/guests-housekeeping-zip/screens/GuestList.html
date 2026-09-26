@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Guest List</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+:root{
+  --navy:#1E2A5E; --navy-ink:#12173A; --navy-soft:#EEF0FA;
+  --coral:#E85D4E; --coral-soft:#FDECE9;
+  --bg:#F5F6FB; --surface:#FFFFFF; --border:#E7E9F3;
+  --text:#1A1D29; --text-muted:#767C99; --text-faint:#A4A9C1;
+  --amber:#C97F04; --amber-soft:#FBF0D9;
+  --success:#1E9E6B; --success-soft:#E4F8EF;
+  --purple:#7C5CD6; --purple-soft:#F1ECFB;
+  --slate:#5B6180; --slate-soft:#EEF0F7;
+}
+body{margin:0;font-family:Inter,sans-serif;background:var(--bg);}
+input::placeholder{color:var(--text-faint);}
+.chip{flex-shrink:0;border-radius:999px;padding:8px 13px;font-family:Inter,sans-serif;font-weight:700;font-size:12px;white-space:nowrap;}
+.tagpill{display:inline-flex;align-items:center;border-radius:999px;padding:2px 8px;font-family:Inter,sans-serif;font-weight:700;font-size:9px;}
+.guestrow{display:flex;gap:12px;padding:14px 14px 14px 12px;background:var(--surface);border-radius:14px;}
+</style>
+</head>
+<body>
+<div style="width:390px;height:844px;box-sizing:border-box;background:var(--bg);display:flex;flex-direction:column;overflow:hidden;position:relative;">
+
+  <div style="flex-shrink:0;padding:52px 20px 14px 20px;box-sizing:border-box;background:var(--surface);display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      <div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:18px;color:var(--navy-ink);">Guest list</div>
+        <div style="font-family:Inter,sans-serif;font-size:11.5px;color:var(--text-muted);margin-top:1px;">5 guests · 1 arriving today</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex-grow:1;overflow-y:auto;">
+
+    <div style="padding:16px 20px 0 20px;box-sizing:border-box;">
+      <div style="position:relative;display:flex;align-items:center;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--text-faint)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;left:12px;"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input placeholder="Search name, email, phone" style="width:100%;height:42px;box-sizing:border-box;padding:0 12px 0 34px;border:1px solid var(--border);border-radius:11px;background:var(--surface);font-family:Inter,sans-serif;font-size:13px;color:var(--text);">
+      </div>
+    </div>
+
+    <div style="display:flex;gap:8px;overflow-x:auto;padding:12px 20px 0 20px;box-sizing:border-box;">
+      <div class="chip" style="background:var(--navy-ink);color:#FFFFFF;">All</div>
+      <div class="chip" style="background:var(--surface);border:1px solid var(--border);color:var(--text-muted);">In House</div>
+      <div class="chip" style="background:var(--surface);border:1px solid var(--border);color:var(--text-muted);">Reserved</div>
+      <div class="chip" style="background:var(--surface);border:1px solid var(--border);color:var(--text-muted);">Checked Out</div>
+      <div style="width:1px;flex-shrink:0;background:var(--border);margin:6px 0;"></div>
+      <div class="chip" style="background:var(--surface);border:1px solid var(--border);color:var(--navy-ink);display:flex;align-items:center;gap:4px;">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 12.7 12.7 20.6a2 2 0 0 1-2.8 0l-8.5-8.5A2 2 0 0 1 1 10.7V4a2 2 0 0 1 2-2h6.7a2 2 0 0 1 1.4.6l9.5 9.5a2 2 0 0 1 0 2.6z"/><circle cx="6.5" cy="6.5" r="1"/></svg>
+        Tags
+      </div>
+    </div>
+
+    <div style="padding:16px 20px 100px 20px;box-sizing:border-box;display:flex;flex-direction:column;gap:10px;">
+
+      <div class="guestrow" style="border-left:3.5px solid var(--success);">
+        <div style="width:38px;height:38px;border-radius:50%;background:var(--navy-soft);border:2px solid var(--success);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <span style="font-family:Inter,sans-serif;font-weight:700;font-size:12.5px;color:var(--navy);">AC</span>
+        </div>
+        <div style="flex-grow:1;min-width:0;">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+            <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;color:var(--navy-ink);">Amara Chukwu</span>
+            <span style="flex-shrink:0;background:var(--success-soft);color:var(--success);border-radius:999px;padding:3px 9px;font-family:Inter,sans-serif;font-weight:700;font-size:9px;">IN HOUSE</span>
+          </div>
+          <div style="font-family:Inter,sans-serif;font-size:11px;color:var(--text-faint);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">amara.chukwu@email.com</div>
+          <div style="display:flex;gap:5px;margin-top:6px;flex-wrap:wrap;">
+            <span class="tagpill" style="background:var(--success-soft);color:var(--success);">VIP</span>
+            <span class="tagpill" style="background:var(--success-soft);color:var(--success);">Repeat Guest</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;margin-top:8px;">
+            <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:12.5px;color:var(--navy-ink);">₦482,000</span>
+            <span style="font-family:Inter,sans-serif;font-size:11px;color:var(--text-muted);">6 stays</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="guestrow">
+        <div style="width:38px;height:38px;border-radius:50%;background:var(--navy-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <span style="font-family:Inter,sans-serif;font-weight:700;font-size:12.5px;color:var(--navy);">DO</span>
+        </div>
+        <div style="flex-grow:1;min-width:0;">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+            <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;color:var(--navy-ink);">David Okafor</span>
+            <span style="flex-shrink:0;background:var(--amber-soft);color:var(--amber);border-radius:999px;padding:3px 9px;font-family:Inter,sans-serif;font-weight:700;font-size:9px;">RESERVED</span>
+          </div>
+          <div style="font-family:Inter,sans-serif;font-size:11px;color:var(--text-faint);margin-top:2px;">d.okafor@email.com</div>
+          <div style="display:flex;gap:5px;margin-top:6px;flex-wrap:wrap;">
+            <span class="tagpill" style="background:var(--slate-soft);color:var(--slate);">Business Traveler</span>
+            <span class="tagpill" style="background:var(--success-soft);color:var(--success);">Corporate Account</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;margin-top:8px;">
+            <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:12.5px;color:var(--navy-ink);">₦210,500</span>
+            <span style="font-family:Inter,sans-serif;font-size:11px;color:var(--text-muted);">3 stays</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="guestrow">
+        <div style="width:38px;height:38px;border-radius:50%;background:var(--navy-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <span style="font-family:Inter,sans-serif;font-weight:700;font-size:12.5px;color:var(--navy);">GA</span>
+        </div>
+        <div style="flex-grow:1;min-width:0;">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+            <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;color:var(--navy-ink);">Grace Adeyemi</span>
+            <span style="flex-shrink:0;background:var(--success-soft);color:var(--success);border-radius:999px;padding:3px 9px;font-family:Inter,sans-serif;font-weight:700;font-size:9px;">IN HOUSE</span>
+          </div>
+          <div style="font-family:Inter,sans-serif;font-size:11px;color:var(--text-faint);margin-top:2px;">grace.a@email.com</div>
+          <div style="display:flex;gap:5px;margin-top:6px;flex-wrap:wrap;">
+            <span class="tagpill" style="background:var(--amber-soft);color:var(--amber);">Honeymoon</span>
+            <span class="tagpill" style="background:var(--purple-soft);color:var(--purple);">High Floor</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;margin-top:8px;">
+            <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:12.5px;color:var(--navy-ink);">₦96,000</span>
+            <span style="font-family:Inter,sans-serif;font-size:11px;color:var(--text-muted);">1 stay</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="guestrow" style="border-left:3.5px solid var(--coral);">
+        <div style="width:38px;height:38px;border-radius:50%;background:var(--navy-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <span style="font-family:Inter,sans-serif;font-weight:700;font-size:12.5px;color:var(--navy);">MB</span>
+        </div>
+        <div style="flex-grow:1;min-width:0;">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+            <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;color:var(--navy-ink);">Michael Bello</span>
+            <span style="flex-shrink:0;background:var(--slate-soft);color:var(--slate);border-radius:999px;padding:3px 9px;font-family:Inter,sans-serif;font-weight:700;font-size:9px;">CHECKED OUT</span>
+          </div>
+          <div style="font-family:Inter,sans-serif;font-size:11px;color:var(--text-faint);margin-top:2px;">m.bello@email.com</div>
+          <div style="display:flex;gap:5px;margin-top:6px;flex-wrap:wrap;">
+            <span class="tagpill" style="background:var(--coral-soft);color:var(--coral);">Payment Issue</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;margin-top:8px;">
+            <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:12.5px;color:var(--navy-ink);">₦42,300</span>
+            <span style="font-family:Inter,sans-serif;font-size:11px;color:var(--text-muted);">2 stays</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="guestrow">
+        <div style="width:38px;height:38px;border-radius:50%;background:var(--navy-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <span style="font-family:Inter,sans-serif;font-weight:700;font-size:12.5px;color:var(--navy);">TM</span>
+        </div>
+        <div style="flex-grow:1;min-width:0;">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+            <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;color:var(--navy-ink);">Tunde Martins</span>
+            <span style="flex-shrink:0;background:var(--amber-soft);color:var(--amber);border-radius:999px;padding:3px 9px;font-family:Inter,sans-serif;font-weight:700;font-size:9px;">RESERVED</span>
+          </div>
+          <div style="font-family:Inter,sans-serif;font-size:11px;color:var(--text-faint);margin-top:2px;">tunde.m@email.com</div>
+          <div style="display:flex;gap:5px;margin-top:6px;flex-wrap:wrap;">
+            <span class="tagpill" style="background:var(--success-soft);color:var(--success);">Loyalty Member</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;margin-top:8px;">
+            <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:12.5px;color:var(--navy-ink);">₦150,750</span>
+            <span style="font-family:Inter,sans-serif;font-size:11px;color:var(--text-muted);">4 stays</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div style="position:absolute;right:18px;bottom:24px;height:52px;padding:0 20px 0 18px;border-radius:26px;background:var(--navy);display:flex;align-items:center;gap:8px;box-shadow:0 12px 22px rgba(30,42,94,0.35);">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+    <span style="font-family:Inter,sans-serif;font-weight:700;font-size:13.5px;color:#FFFFFF;">New guest</span>
+  </div>
+
+</div>
+</body>
+</html>

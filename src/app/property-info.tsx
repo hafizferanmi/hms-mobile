@@ -3,6 +3,7 @@ import { router } from "expo-router";
 import {
   ActivityIndicator,
   Pressable,
+  RefreshControl,
   ScrollView,
   StyleSheet,
   Text,
@@ -195,7 +196,7 @@ function formatChildPolicy(age: number | null | undefined) {
 }
 
 export default function PropertyInfoScreen() {
-  const { data: company, isLoading, isError, error } = useCompany();
+  const { data: company, isLoading, isError, error, refetch, isRefetching } = useCompany();
 
   return (
     <View style={styles.screen}>
@@ -221,6 +222,9 @@ export default function PropertyInfoScreen() {
         <ScrollView
           contentContainerStyle={styles.body}
           showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl refreshing={isRefetching} onRefresh={refetch} tintColor={colors.navy} />
+          }
         >
           <LinearGradient
             colors={["#3E52A3", colors.navy]}

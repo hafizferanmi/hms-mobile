@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { router } from 'expo-router';
 import { useState } from 'react';
-import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Pressable, RefreshControl, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Svg, { Circle, Path, Rect } from 'react-native-svg';
 
 import { checkAvailability, listRoomTypes, roomTypePrice, type RoomTypeDto } from '@/api/rooms';
@@ -215,7 +215,16 @@ export default function CheckAvailabilityScreen() {
             </Pressable>
           </View>
 
-          <ScrollView contentContainerStyle={styles.resultsBody} showsVerticalScrollIndicator={false}>
+          <ScrollView
+            contentContainerStyle={styles.resultsBody}
+            showsVerticalScrollIndicator={false}
+            refreshControl={
+              <RefreshControl
+                refreshing={availabilityQuery.isRefetching}
+                onRefresh={availabilityQuery.refetch}
+                tintColor={colors.navy}
+              />
+            }>
             {availabilityQuery.isLoading ? (
               <View style={styles.resultsStateBox}>
                 <ActivityIndicator color={colors.navy} />

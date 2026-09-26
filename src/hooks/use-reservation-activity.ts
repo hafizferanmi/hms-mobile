@@ -43,6 +43,10 @@ export function useReservationFolio(checkInId: string) {
     isLoading: chargesQuery.isLoading || paymentsQuery.isLoading,
     isError: chargesQuery.isError || paymentsQuery.isError,
     error: chargesQuery.error ?? paymentsQuery.error,
+    // reservation/[id].tsx's pull-to-refresh needs one function that
+    // covers both underlying queries, not two separate ones to remember
+    // to call.
+    refetch: () => Promise.all([chargesQuery.refetch(), paymentsQuery.refetch()]),
   };
 }
 
@@ -53,6 +57,7 @@ export function useReservationActivity(checkInId: string) {
     isLoading: logsQuery.isLoading,
     isError: logsQuery.isError,
     error: logsQuery.error,
+    refetch: logsQuery.refetch,
   };
 }
 

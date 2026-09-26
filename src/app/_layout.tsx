@@ -101,6 +101,9 @@ function RootNavigator() {
         <Stack.Screen name="custom-fields" />
         <Stack.Screen name="add-custom-field" />
         <Stack.Screen name="new-company" />
+        <Stack.Screen name="guests" />
+        <Stack.Screen name="guest/[id]" />
+        <Stack.Screen name="housekeeping" />
       </Stack.Protected>
 
       <Stack.Protected guard={!session}>

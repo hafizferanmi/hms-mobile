@@ -115,3 +115,27 @@ export function updateRoom(roomId: string, number: string, roomTypeId: string, d
 export function deleteRoom(roomId: string) {
   return apiDelete<{ deleted: boolean }>(`/rooms/${roomId}`);
 }
+
+// Housekeeping.html's board — mirrors the rest of the Room model
+// (src/models/room.js) that the other room screens don't need: its
+// cleanStatus and who's assigned to clean it. GET /rooms (getAllRooms)
+// already populates both roomTypeId and housekeepingAssignee down to
+// {_id, name}, so the board can group by room type and show an assignee
+// initials-avatar with no extra requests.
+export type CleanStatus = 'DIRTY' | 'CLEANING' | 'CLEAN' | 'INSPECTED' | 'OUT_OF_ORDER';
+
+export type HousekeepingRoomDto = {
+  _id: string;
+  number: string;
+  cleanStatus: CleanStatus;
+  roomTypeId: { _id: string; name: string } | null;
+  housekeepingAssignee: { _id: string; name: string } | null;
+};
+
+export function listRoomsForHousekeeping() {
+  return apiGet<HousekeepingRoomDto[]>('/rooms');
+}
+
+export function updateRoomCleanStatus(roomId: string, cleanStatus: CleanStatus) {
+  return apiPut<HousekeepingRoomDto>(`/rooms/${roomId}/clean-status`, { cleanStatus });
+}
