@@ -9,7 +9,7 @@ import { colors, fonts } from '@/design/theme';
 // used for both states here.
 const TABS: { name: string; label: string; icon: React.ComponentProps<typeof Feather>['name'] }[] = [
   { name: 'index', label: 'Home', icon: 'home' },
-  { name: 'inbox', label: 'Inbox', icon: 'inbox' },
+  { name: 'ai-chat', label: 'AI Chat', icon: 'message-circle' },
   { name: 'calendar', label: 'Calendar', icon: 'calendar' },
   { name: 'statistics', label: 'Statistics', icon: 'bar-chart-2' },
   { name: 'settings', label: 'Settings', icon: 'settings' },

@@ -1,3 +1,4 @@
+import { router } from 'expo-router';
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -5,12 +6,25 @@ import Svg, { Circle, Path } from 'react-native-svg';
 
 import { colors, fonts } from '@/design/theme';
 
+// Was the tab bar's "Inbox" tab (app-tabs.tsx) — moved here, reachable
+// instead from the new notification-bell icon on Home, now that AI Chat
+// has taken the Inbox tab slot. Same content/behavior as before, just
+// pushed instead of a tab, so it now needs its own back button.
+
 type InboxTab = 'reservation' | 'system';
 
 const TABS: { key: InboxTab; label: string }[] = [
   { key: 'reservation', label: 'Reservation' },
   { key: 'system', label: 'System' },
 ];
+
+function BackIcon() {
+  return (
+    <Svg width={20} height={20} viewBox="0 0 24 24" fill="none" stroke={colors.text} strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round">
+      <Path d="M15 18l-6-6 6-6" />
+    </Svg>
+  );
+}
 
 function ClearIcon() {
   return (
@@ -52,7 +66,7 @@ function BellIllustration() {
   );
 }
 
-export default function InboxScreen() {
+export default function NotificationsScreen() {
   const insets = useSafeAreaInsets();
   const [activeTab, setActiveTab] = useState<InboxTab>('reservation');
 
@@ -64,6 +78,9 @@ export default function InboxScreen() {
   return (
     <View style={styles.screen}>
       <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
+        <Pressable onPress={() => router.back()} hitSlop={8}>
+          <BackIcon />
+        </Pressable>
         <Text style={styles.title}>Notifications</Text>
         <Pressable accessibilityLabel="Mark all as read" hitSlop={8}>
           <ClearIcon />
@@ -102,12 +119,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    gap: 12,
     paddingHorizontal: 20,
     paddingBottom: 16,
   },
   title: {
+    flex: 1,
+    textAlign: 'center',
     fontFamily: fonts.headingExtraBold,
-    fontSize: 19,
+    fontSize: 17,
     color: colors.navyInk,
   },
   tabRow: {

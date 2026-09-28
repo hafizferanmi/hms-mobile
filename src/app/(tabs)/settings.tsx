@@ -205,6 +205,11 @@ export default function SettingsScreen() {
           <SettingsRow
             label="Custom fields"
             onPress={() => router.push("/custom-fields")}
+            showDivider
+          />
+          <SettingsRow
+            label="Payment methods"
+            onPress={() => router.push("/payment-methods")}
           />
         </View>
 

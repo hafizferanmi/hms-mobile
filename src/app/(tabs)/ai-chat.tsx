@@ -1,4 +1,3 @@
-import { router } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withDelay, withRepeat, withSequence, withTiming } from 'react-native-reanimated';
@@ -11,21 +10,17 @@ import { useChatHistory, useSendChatMessage } from '@/hooks/use-chat';
 // -----------------------------------------------------------------------
 // The mobile counterpart to hms-frontend-react's floating AiChat widget
 // (src/components/misc/AiChat/), as a full screen instead of a floating
-// panel — reached from Home's "PMS AI Assistant" card, which used to be
-// inert. Same backend (GET /chat/history, POST /chat/message — one
-// continuous thread per staff member, no streaming, no conversation
-// list), same suggested prompts and "unverified reply" disclaimer as web.
+// panel. Now the "AI Chat" tab itself (app-tabs.tsx) rather than a screen
+// pushed from Home's old "PMS AI Assistant" card (which is gone — see
+// (tabs)/index.tsx), so this has no back button; it's a tab root like
+// Home/Calendar/Statistics/Settings. Same backend (GET /chat/history,
+// POST /chat/message — one continuous thread per staff member, no
+// streaming, no conversation list), same suggested prompts and
+// "unverified reply" disclaimer as web.
 // -----------------------------------------------------------------------
 
 const EXAMPLE_PROMPTS = ["How many rooms are available today?", "Who's checking out today?", "What's this week's revenue?"];
 
-function BackIcon() {
-  return (
-    <Svg width={20} height={20} viewBox="0 0 24 24" fill="none" stroke={colors.text} strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round">
-      <Path d="M15 18l-6-6 6-6" />
-    </Svg>
-  );
-}
 function SparkleIcon({ color = '#FFFFFF', size = 18 }: { color?: string; size?: number }) {
   return (
     <Svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
@@ -139,9 +134,6 @@ export default function AiChatScreen() {
   return (
     <KeyboardAvoidingView style={styles.screen} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <View style={styles.header}>
-        <Pressable onPress={() => router.back()} hitSlop={8}>
-          <BackIcon />
-        </Pressable>
         <View style={styles.headerCenter}>
           <View style={styles.headerIcon}>
             <SparkleIcon color={colors.navy} size={16} />
@@ -151,7 +143,6 @@ export default function AiChatScreen() {
             <Text style={styles.headerSubtitle}>Ask about occupancy, guests, rooms & more</Text>
           </View>
         </View>
-        <View style={{ width: 20 }} />
       </View>
 
       <ScrollView
@@ -207,7 +198,6 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
     backgroundColor: colors.surface,
     borderBottomWidth: 1,
     borderBottomColor: colors.border,

@@ -84,6 +84,7 @@ function RootNavigator() {
         <Stack.Screen name="add-charge" />
         <Stack.Screen name="record-payment" />
         <Stack.Screen name="more" />
+        <Stack.Screen name="notifications" />
         <Stack.Screen name="check-availability" />
         <Stack.Screen name="lost-and-found" />
         <Stack.Screen name="log-found-item" />
@@ -92,6 +93,7 @@ function RootNavigator() {
         <Stack.Screen name="add-staff" />
         <Stack.Screen name="room-types" />
         <Stack.Screen name="role-permissions" />
+        <Stack.Screen name="payment-methods" />
         <Stack.Screen name="room-type/[id]" />
         <Stack.Screen name="add-room-type" />
         <Stack.Screen name="add-room" />
@@ -113,11 +115,15 @@ function RootNavigator() {
         <Stack.Screen name="stats/channel" />
         <Stack.Screen name="stats/sales-revenue" />
         <Stack.Screen name="stats/metrics" />
-        <Stack.Screen name="ai-chat" />
       </Stack.Protected>
 
       <Stack.Protected guard={!session}>
         <Stack.Screen name="login" />
+        <Stack.Screen name="signup" />
+        <Stack.Screen name="forgot-password" />
+        <Stack.Screen name="forgot-password-success" />
+        <Stack.Screen name="reset-password" />
+        <Stack.Screen name="reset-password-success" />
       </Stack.Protected>
     </Stack>
   );

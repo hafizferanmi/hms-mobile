@@ -16,10 +16,6 @@ const DECORATIVE = {
   headerGradientStart: "#3E52A3",
   headerCircle: "#5A6BC0",
   revenueLabel: "#C4CBEE",
-  aiGradientEnd: "#3B2E6E",
-  aiCircle: "#5A4E9A",
-  aiBadgeBg: "rgba(232,93,78,0.25)",
-  aiBadgeText: "#FFD9CF",
   star: "#F0B429",
   chipBg: "rgba(255,255,255,0.12)",
   chipBgStrong: "rgba(255,255,255,0.14)",
@@ -48,7 +44,7 @@ function ChevronDownIcon({ color, size = 14 }: IconProps) {
   );
 }
 
-function GlobeIcon({ color, size = 18 }: IconProps) {
+function BellIcon({ color, size = 18 }: IconProps) {
   return (
     <Svg
       width={size}
@@ -60,8 +56,8 @@ function GlobeIcon({ color, size = 18 }: IconProps) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <Circle cx={12} cy={12} r={9} />
-      <Path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+      <Path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+      <Path d="M13.7 21a2 2 0 0 1-3.4 0" />
     </Svg>
   );
 }
@@ -79,31 +75,6 @@ function PlusIcon({ color, size = 18 }: IconProps) {
       strokeLinejoin="round"
     >
       <Path d="M12 5v14M5 12h14" />
-    </Svg>
-  );
-}
-
-function ArrowRightIcon({ color, size = 13 }: IconProps) {
-  return (
-    <Svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke={color}
-      strokeWidth={2.4}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <Path d="M9 5l7 7-7 7" />
-    </Svg>
-  );
-}
-
-function StarIcon({ color, size = 12 }: IconProps) {
-  return (
-    <Svg width={size} height={size} viewBox="0 0 24 24" fill={color}>
-      <Path d="M12 2l2.5 7.5H22l-6 4.5 2.5 7.5-6.5-4.5L5.5 21.5 8 14 2 9.5h7.5z" />
     </Svg>
   );
 }
@@ -329,9 +300,10 @@ export default function HomeScreen() {
           <View style={styles.headerActions}>
             <Pressable
               style={styles.headerIconButton}
-              accessibilityLabel="Language"
+              accessibilityLabel="Notifications"
+              onPress={() => router.push('/notifications')}
             >
-              <GlobeIcon color="#FFFFFF" />
+              <BellIcon color="#FFFFFF" />
             </Pressable>
             <Pressable
               style={styles.headerIconButton}
@@ -406,30 +378,11 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        <LinearGradient
-          colors={[colors.navy, DECORATIVE.aiGradientEnd]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={styles.aiBanner}
-        >
-          <Svg width={90} height={90} viewBox="0 0 90 90" style={styles.aiRing}>
-            <Circle cx={45} cy={45} r={45} fill={DECORATIVE.aiCircle} />
-          </Svg>
-
-          <View style={styles.aiBadge}>
-            <StarIcon color={DECORATIVE.star} />
-            <Text style={styles.aiBadgeText}>NEW</Text>
-          </View>
-          <Text style={styles.aiTitle}>PMS AI Assistant</Text>
-          <Text style={styles.aiDescription}>
-            Manage tasks with natural language — queries, operations and
-            analytics.
-          </Text>
-          <Pressable style={styles.aiCta} onPress={() => router.push('/ai-chat')}>
-            <Text style={styles.aiCtaText}>Try it now</Text>
-            <ArrowRightIcon color="#FFFFFF" />
-          </Pressable>
-        </LinearGradient>
+        {/* The "PMS AI Assistant" promo card used to sit here, linking to
+            /ai-chat — removed now that AI Chat is its own bottom tab
+            (app-tabs.tsx) rather than something to promote from Home.
+            Deliberately left empty for now rather than filled with
+            something else; a better use for this space can come later. */}
       </ScrollView>
 
       {/* Floats above the Quick Actions row — opens edit-guest.tsx in its
@@ -635,62 +588,6 @@ const styles = StyleSheet.create({
     fontSize: 11.5,
     color: colors.text,
     textAlign: "center",
-  },
-  aiBanner: {
-    marginTop: 18,
-    borderRadius: radii.card,
-    padding: 20,
-    overflow: "hidden",
-    alignItems: "flex-start",
-  },
-  aiRing: {
-    position: "absolute",
-    bottom: -30,
-    right: -20,
-    opacity: 0.3,
-  },
-  aiBadge: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 5,
-    backgroundColor: DECORATIVE.aiBadgeBg,
-    borderRadius: 20,
-    paddingVertical: 4,
-    paddingHorizontal: 10,
-  },
-  aiBadgeText: {
-    fontFamily: fonts.bodyBold,
-    fontSize: 10.5,
-    color: DECORATIVE.aiBadgeText,
-  },
-  aiTitle: {
-    fontFamily: fonts.headingExtraBold,
-    fontSize: 19,
-    color: "#FFFFFF",
-    marginTop: 10,
-  },
-  aiDescription: {
-    fontFamily: fonts.body,
-    fontSize: 13,
-    color: DECORATIVE.revenueLabel,
-    marginTop: 4,
-    lineHeight: 19.5,
-    maxWidth: 240,
-  },
-  aiCta: {
-    marginTop: 14,
-    backgroundColor: DECORATIVE.chipBgStrong,
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 6,
-    borderRadius: 10,
-    paddingVertical: 8,
-    paddingHorizontal: 14,
-  },
-  aiCtaText: {
-    fontFamily: fonts.bodySemibold,
-    fontSize: 12.5,
-    color: "#FFFFFF",
   },
   fab: {
     position: "absolute",

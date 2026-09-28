@@ -10,7 +10,7 @@ import { colors, fonts } from '@/design/theme';
 // generated typed-route union (experiments.typedRoutes in app.json).
 const TABS = [
   { name: 'index', href: '/', label: 'Home', icon: 'home' },
-  { name: 'inbox', href: '/inbox', label: 'Inbox', icon: 'inbox' },
+  { name: 'ai-chat', href: '/ai-chat', label: 'AI Chat', icon: 'message-circle' },
   { name: 'calendar', href: '/calendar', label: 'Calendar', icon: 'calendar' },
   { name: 'statistics', href: '/statistics', label: 'Statistics', icon: 'bar-chart-2' },
   { name: 'settings', href: '/settings', label: 'Settings', icon: 'settings' },

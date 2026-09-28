@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
+import { router } from "expo-router";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import {
@@ -306,7 +307,7 @@ export default function LoginScreen() {
                 />
                 <Text style={styles.rememberText}>Remember me</Text>
               </Pressable>
-              <Pressable hitSlop={8}>
+              <Pressable hitSlop={8} onPress={() => router.push("/forgot-password")}>
                 <Text style={styles.forgotText}>Forgot password?</Text>
               </Pressable>
             </View>
@@ -349,7 +350,9 @@ export default function LoginScreen() {
 
           <Text style={styles.footerText}>
             New to iSuites?{" "}
-            <Text style={styles.footerLink}>Contact your property admin</Text>
+            <Text style={styles.footerLink} onPress={() => router.push("/signup")}>
+              Create one
+            </Text>
           </Text>
         </View>
       </View>
