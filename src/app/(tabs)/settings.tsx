@@ -142,7 +142,10 @@ export default function SettingsScreen() {
 
           <View style={styles.propertyHeaderRow}>
             <Text style={styles.propertyHeading}>Current Property</Text>
-            <Pressable style={styles.switchPropertyLink} onPress={() => setSwitchSheetOpen(true)}>
+            <Pressable
+              style={styles.switchPropertyLink}
+              onPress={() => setSwitchSheetOpen(true)}
+            >
               <Text style={styles.switchPropertyText}>Switch Property</Text>
               <ChevronRightIcon color={DECORATIVE.linkMuted} size={13} />
             </Pressable>
@@ -174,12 +177,12 @@ export default function SettingsScreen() {
             onPress={() => router.push("/room-types")}
             showDivider
           />
-          <SettingsRow label="Hourly Room" onPress={() => {}} showDivider />
+          {/* <SettingsRow label="Hourly Room" onPress={() => {}} showDivider />
           <SettingsRow label="Combined Room" onPress={() => {}} showDivider />
           <SettingsRow
             label="Property Info"
             onPress={() => router.push("/property-info")}
-          />
+          /> */}
         </View>
 
         {/* "Staff" was "Accounts" in the mockup — renamed since it opens

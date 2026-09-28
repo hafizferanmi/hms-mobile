@@ -18,11 +18,13 @@ import { useStaff } from '@/hooks/use-staff';
 // sheet), not separate routes — same pattern as reservation/[id].tsx's
 // MoreMenuOverlay, which never became its own route either.
 //
-// "Edit role"/"Duplicate role"/"Add role" have no designed screen
-// (FLOW.md says so explicitly) — left as a placeholder alert rather than
-// inventing a permissions-picker UI. "Edit staff" reuses add-staff.tsx's
-// form in edit mode (same fields, real PUT /staffs/:id endpoint), same
-// reuse decision as room-type/[id].tsx's "Edit room type".
+// "Edit role" now opens role-permissions.tsx (UI only — see that file's
+// own comment; there's no backend model yet for its category > group >
+// permission tree, so nothing here actually saves). "Duplicate role"/"Add
+// role" still have no designed screen (FLOW.md says so explicitly) and
+// stay as placeholder alerts. "Edit staff" reuses add-staff.tsx's form in
+// edit mode (same fields, real PUT /staffs/:id endpoint), same reuse
+// decision as room-type/[id].tsx's "Edit room type".
 // -----------------------------------------------------------------------
 
 type Tab = 'staff' | 'roles';
@@ -210,7 +212,10 @@ function RoleActionsMenu({
           </View>
           <Pressable
             style={[styles.sheetItem, styles.sheetItemDivider]}
-            onPress={() => Alert.alert('Edit role', 'A full permissions editor for existing roles isn’t built yet.')}>
+            onPress={() => {
+              onClose();
+              router.push({ pathname: '/role-permissions', params: { roleId: role._id, roleName: role.name } });
+            }}>
             <Text style={styles.sheetItemText}>Edit role</Text>
           </Pressable>
           <Pressable

@@ -44,6 +44,8 @@ export type RoomDto = {
   number: string;
 };
 
+export type RateType = 'FLAT' | 'CUSTOM';
+
 export type CheckInDto = {
   _id: string;
   reservationNumber?: string;
@@ -53,6 +55,8 @@ export type CheckInDto = {
   dateOfDeparture: string;
   guests: GuestDto[];
   customFieldValues?: CustomFieldValue[];
+  rate?: { amount?: number; type?: RateType };
+  note?: string;
 };
 
 export type ListCheckInsResponse = {
@@ -81,6 +85,13 @@ export type ReservationPayload = {
   dateOfDeparture: string;
   room: string;
   customFieldValues?: CustomFieldValue[];
+  // rateType defaults to FLAT server-side (businesslogic/checkIn.js#
+  // resolveRate) if omitted, resolving the room type's own price —
+  // rateAmount is only actually required (and used) when rateType is
+  // CUSTOM; sending it alongside FLAT is harmless but ignored.
+  rateType?: RateType;
+  rateAmount?: number;
+  note?: string;
 };
 
 export function createReservation(payload: ReservationPayload) {
@@ -147,6 +158,9 @@ export type Reservation = {
   status: ReservationStatus;
   additionalGuests: string[];
   customFieldValues: CustomFieldValue[];
+  rateType?: RateType;
+  rateAmount?: number;
+  note?: string;
 };
 
 function guestFullName(guest: GuestDto | undefined) {
@@ -171,5 +185,8 @@ export function toReservation(dto: CheckInDto): Reservation {
     status: CHECKIN_TYPE_TO_STATUS[dto.type],
     additionalGuests,
     customFieldValues: dto.customFieldValues ?? [],
+    rateType: dto.rate?.type,
+    rateAmount: dto.rate?.amount,
+    note: dto.note,
   };
 }

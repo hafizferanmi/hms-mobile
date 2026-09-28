@@ -13,8 +13,14 @@ import {
   validateCustomFieldValues,
   type CustomFieldDto,
 } from '@/api/custom-fields';
-import { createReservation, updateReservation, type Reservation, type ReservationPayload } from '@/api/reservations';
-import { checkAvailability, type AvailableRoomDto } from '@/api/rooms';
+import {
+  createReservation,
+  updateReservation,
+  type RateType,
+  type Reservation,
+  type ReservationPayload,
+} from '@/api/reservations';
+import { checkAvailability, roomTypePrice, type AvailableRoomDto } from '@/api/rooms';
 import { KeyboardSafeView } from '@/components/keyboard-safe-view';
 import { colors, fonts, radii } from '@/design/theme';
 import { useCustomFields } from '@/hooks/use-custom-fields';
@@ -73,6 +79,7 @@ const guestSchema = z.object({
     .string()
     .optional()
     .refine((v) => !v || v.length >= 11, { error: 'Phone number must be at least 11 digits' }),
+  note: z.string().optional(),
 });
 type GuestFormValues = z.infer<typeof guestSchema>;
 
@@ -521,6 +528,7 @@ function EditGuestForm({
   const {
     control,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<GuestFormValues>({
     resolver: zodResolver(guestSchema),
@@ -529,6 +537,7 @@ function EditGuestForm({
       lastName: initial.lastName,
       email: reservation?.email ?? '',
       phone: reservation?.phone ?? '',
+      note: reservation?.note ?? '',
     },
   });
 
@@ -571,6 +580,32 @@ function EditGuestForm({
     roomIdOverride ?? (roomParamStillAvailable ? roomParam : availableRooms[0]?._id) ?? null;
   const selectedRoom = availableRooms.find((r) => r._id === selectedRoomId) ?? null;
 
+  // "Add custom rate"/"Add a note" — collapsed disclosures matching
+  // hms-frontend-react's CheckInForm.js exactly: open by default only when
+  // editing a reservation that already has that data set.
+  const [showRate, setShowRate] = useState(reservation?.rateType === 'CUSTOM');
+  const [showNote, setShowNote] = useState(Boolean(reservation?.note));
+  const [rateType, setRateType] = useState<RateType>(reservation?.rateType ?? 'FLAT');
+  const [rateAmount, setRateAmount] = useState(reservation?.rateAmount != null ? String(reservation.rateAmount) : '');
+  const [rateError, setRateError] = useState<string | undefined>();
+
+  // Keeps the displayed rate in sync with the selected room's own price
+  // while on Flat rate — same as CheckInForm.js's flatRate effect. Typing
+  // a different amount is what flips this to Custom rate (see the input's
+  // onChangeText below); there's no live room-price lookup to sync against
+  // in edit mode (Room is read-only there), so this only applies on create.
+  // Adjusted during render rather than in a useEffect, per
+  // https://react.dev/learn/you-might-not-need-an-effect#adjusting-state-when-a-prop-changes
+  // (same pattern already used in custom-fields.tsx for the same reason).
+  const flatRateSyncKey = `${rateType}:${selectedRoom?._id ?? ''}`;
+  const [prevFlatRateSyncKey, setPrevFlatRateSyncKey] = useState(flatRateSyncKey);
+  if (isCreateMode && rateType === 'FLAT' && flatRateSyncKey !== prevFlatRateSyncKey) {
+    setPrevFlatRateSyncKey(flatRateSyncKey);
+    setRateAmount(selectedRoom ? String(roomTypePrice(selectedRoom.roomTypeId)) : '');
+  } else if (flatRateSyncKey !== prevFlatRateSyncKey) {
+    setPrevFlatRateSyncKey(flatRateSyncKey);
+  }
+
   const invalidateActivity = useInvalidateReservationActivity();
   const saveMutation = useMutation({
     mutationFn: (payload: ReservationPayload) =>
@@ -596,6 +631,15 @@ function EditGuestForm({
       return;
     }
 
+    // Matches CheckInSchema server-side: rateAmount is only required when
+    // rateType is CUSTOM (FLAT resolves the room type's own price instead,
+    // regardless of what's in this field).
+    if (showRate && rateType === 'CUSTOM' && !rateAmount.trim()) {
+      setRateError('Enter a rate for this reservation');
+      return;
+    }
+    setRateError(undefined);
+
     saveMutation.mutate({
       firstName: values.firstName,
       lastName: values.lastName,
@@ -605,6 +649,9 @@ function EditGuestForm({
       dateOfDeparture: departureDate.toISOString(),
       room: roomId,
       customFieldValues: toCustomFieldValuesPayload(customFieldValues),
+      rateType: showRate ? rateType : undefined,
+      rateAmount: showRate && rateAmount.trim() ? Number(rateAmount) : undefined,
+      note: showNote ? values.note || undefined : undefined,
     });
   }
 
@@ -749,16 +796,96 @@ function EditGuestForm({
 
           <View style={styles.divider} />
 
-          {/* TODO(nav): neither a custom-rate nor a notes flow is designed
-              yet. */}
-          <Pressable style={styles.linkRow}>
-            <PlusIcon />
-            <Text style={styles.linkText}>Add custom rate</Text>
-          </Pressable>
-          <Pressable style={styles.linkRow}>
-            <PlusIcon />
-            <Text style={styles.linkText}>Add a note</Text>
-          </Pressable>
+          {showRate ? (
+            <View style={styles.disclosureOpen}>
+              <View style={styles.disclosureHeaderRow}>
+                <Text style={styles.disclosureTitle}>Custom rate</Text>
+                <Pressable
+                  onPress={() => {
+                    setShowRate(false);
+                    setRateType('FLAT');
+                    setRateError(undefined);
+                  }}
+                  hitSlop={8}>
+                  <CloseIcon />
+                </Pressable>
+              </View>
+              <View style={styles.rateRow}>
+                <View style={styles.rateTypeField}>
+                  <Text style={styles.fieldLabel}>RATE TYPE</Text>
+                  <View style={styles.rateTypeToggle}>
+                    {(['FLAT', 'CUSTOM'] as RateType[]).map((type) => (
+                      <Pressable
+                        key={type}
+                        style={[styles.rateTypeOption, rateType === type && styles.rateTypeOptionActive]}
+                        onPress={() => setRateType(type)}>
+                        <Text style={[styles.rateTypeOptionText, rateType === type && styles.rateTypeOptionTextActive]}>
+                          {type === 'FLAT' ? 'Flat rate' : 'Custom rate'}
+                        </Text>
+                      </Pressable>
+                    ))}
+                  </View>
+                </View>
+                <View style={styles.rateAmountField}>
+                  <Text style={styles.fieldLabel}>RATE / NIGHT</Text>
+                  <TextInput
+                    value={rateAmount}
+                    onChangeText={(text) => {
+                      setRateAmount(text);
+                      setRateError(undefined);
+                      if (rateType !== 'CUSTOM') setRateType('CUSTOM');
+                    }}
+                    placeholder={isCreateMode && !selectedRoom ? 'Select a room first' : 'Rate per night'}
+                    placeholderTextColor={colors.textFaint}
+                    keyboardType="numeric"
+                    style={styles.input}
+                  />
+                </View>
+              </View>
+              {rateError && <Text style={styles.fieldError}>{rateError}</Text>}
+            </View>
+          ) : (
+            <Pressable style={styles.linkRow} onPress={() => setShowRate(true)}>
+              <PlusIcon />
+              <Text style={styles.linkText}>Add custom rate</Text>
+            </Pressable>
+          )}
+
+          {showNote ? (
+            <View style={styles.disclosureOpen}>
+              <View style={styles.disclosureHeaderRow}>
+                <Text style={styles.disclosureTitle}>Note</Text>
+                <Pressable
+                  onPress={() => {
+                    setShowNote(false);
+                    setValue('note', '');
+                  }}
+                  hitSlop={8}>
+                  <CloseIcon />
+                </Pressable>
+              </View>
+              <Controller
+                control={control}
+                name="note"
+                render={({ field: { value, onChange, onBlur } }) => (
+                  <TextInput
+                    value={value}
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                    placeholder="Add your note"
+                    placeholderTextColor={colors.textFaint}
+                    multiline
+                    style={styles.noteInput}
+                  />
+                )}
+              />
+            </View>
+          ) : (
+            <Pressable style={styles.linkRow} onPress={() => setShowNote(true)}>
+              <PlusIcon />
+              <Text style={styles.linkText}>Add a note</Text>
+            </Pressable>
+          )}
         </View>
 
         {customFieldsQuery.isLoading ? (
@@ -1070,6 +1197,67 @@ const styles = StyleSheet.create({
     fontFamily: fonts.bodyBold,
     fontSize: 13.5,
     color: colors.navy,
+  },
+  disclosureOpen: {
+    gap: 12,
+  },
+  disclosureHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  disclosureTitle: {
+    fontFamily: fonts.bodyBold,
+    fontSize: 13.5,
+    color: colors.navyInk,
+  },
+  rateRow: {
+    flexDirection: 'row',
+    gap: 10,
+  },
+  rateTypeField: {
+    flex: 1,
+  },
+  rateAmountField: {
+    flex: 1,
+  },
+  rateTypeToggle: {
+    marginTop: 6,
+    flexDirection: 'row',
+    backgroundColor: colors.bg,
+    borderRadius: 10,
+    padding: 3,
+  },
+  rateTypeOption: {
+    flex: 1,
+    alignItems: 'center',
+    paddingVertical: 8,
+    borderRadius: 8,
+  },
+  rateTypeOptionActive: {
+    backgroundColor: colors.navy,
+  },
+  rateTypeOptionText: {
+    fontFamily: fonts.bodyBold,
+    fontSize: 11.5,
+    color: colors.textMuted,
+  },
+  rateTypeOptionTextActive: {
+    color: '#FFFFFF',
+  },
+  noteInput: {
+    marginTop: 6,
+    minHeight: 80,
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    fontFamily: fonts.body,
+    fontSize: 14,
+    color: colors.text,
+    backgroundColor: colors.surface,
+    textAlignVertical: 'top',
   },
   additionalHeader: {
     marginTop: 26,

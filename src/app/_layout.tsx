@@ -91,6 +91,7 @@ function RootNavigator() {
         <Stack.Screen name="staff-roles" />
         <Stack.Screen name="add-staff" />
         <Stack.Screen name="room-types" />
+        <Stack.Screen name="role-permissions" />
         <Stack.Screen name="room-type/[id]" />
         <Stack.Screen name="add-room-type" />
         <Stack.Screen name="add-room" />
@@ -104,6 +105,15 @@ function RootNavigator() {
         <Stack.Screen name="guests" />
         <Stack.Screen name="guest/[id]" />
         <Stack.Screen name="housekeeping" />
+        <Stack.Screen name="maintenance" />
+        <Stack.Screen name="maintenance-ticket-form" />
+        <Stack.Screen name="maintenance-ticket/[id]" />
+        <Stack.Screen name="stats/revenue" />
+        <Stack.Screen name="stats/transactions" />
+        <Stack.Screen name="stats/channel" />
+        <Stack.Screen name="stats/sales-revenue" />
+        <Stack.Screen name="stats/metrics" />
+        <Stack.Screen name="ai-chat" />
       </Stack.Protected>
 
       <Stack.Protected guard={!session}>

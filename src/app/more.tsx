@@ -60,6 +60,14 @@ function GuestsIcon({ color }: { color: string }) {
   );
 }
 
+function MaintenanceIcon({ color }: { color: string }) {
+  return (
+    <Svg width={22} height={22} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <Path d="M14.7 6.3a4 4 0 0 0-5.6 5.6L3 18l3 3 6.1-6.1a4 4 0 0 0 5.6-5.6l-2.8 2.8-2-2z" />
+    </Svg>
+  );
+}
+
 type MoreTile = {
   key: string;
   label: string;
@@ -93,6 +101,14 @@ const MORE_TILES: MoreTile[] = [
     iconColor: colors.amber,
     icon: (color) => <ReviewsIcon color={color} />,
     onPress: () => router.push('/reviews'),
+  },
+  {
+    key: 'maintenance',
+    label: 'Maintenance',
+    chipColor: colors.navySoft,
+    iconColor: colors.navy,
+    icon: (color) => <MaintenanceIcon color={color} />,
+    onPress: () => router.push('/maintenance'),
   },
   // TODO(nav): Reports doesn't have a destination screen designed yet, so
   // it's inert for now, same as it was on Home.

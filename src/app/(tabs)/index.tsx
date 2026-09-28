@@ -425,7 +425,7 @@ export default function HomeScreen() {
             Manage tasks with natural language — queries, operations and
             analytics.
           </Text>
-          <Pressable style={styles.aiCta}>
+          <Pressable style={styles.aiCta} onPress={() => router.push('/ai-chat')}>
             <Text style={styles.aiCtaText}>Try it now</Text>
             <ArrowRightIcon color="#FFFFFF" />
           </Pressable>

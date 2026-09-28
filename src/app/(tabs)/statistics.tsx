@@ -1,3 +1,4 @@
+import { router } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Path, Rect } from 'react-native-svg';
@@ -67,13 +68,31 @@ const TILES: {
   chipColor: string;
   icon: (props: IconProps) => React.JSX.Element;
   iconColor: string;
+  route: string | null;
 }[] = [
-  { key: 'revenue', label: 'Revenue', chipColor: colors.amberSoft, icon: RevenueIcon, iconColor: colors.amber },
-  { key: 'transactions', label: 'Transactions', chipColor: colors.navySoft, icon: TransactionsIcon, iconColor: colors.navy },
-  { key: 'channel', label: 'Channel', chipColor: colors.purpleSoft, icon: ChannelIcon, iconColor: colors.purple },
-  { key: 'sales-revenue', label: 'Sales Revenue', chipColor: colors.coralSoft, icon: SalesRevenueIcon, iconColor: colors.coral },
-  { key: 'metrics', label: 'Metrics', chipColor: colors.navySoft, icon: MetricsIcon, iconColor: colors.navy },
-  { key: 'quick-note', label: 'Quick Note', chipColor: colors.successSoft, icon: QuickNoteIcon, iconColor: colors.success },
+  { key: 'revenue', label: 'Revenue', chipColor: colors.amberSoft, icon: RevenueIcon, iconColor: colors.amber, route: '/stats/revenue' },
+  {
+    key: 'transactions',
+    label: 'Transactions',
+    chipColor: colors.navySoft,
+    icon: TransactionsIcon,
+    iconColor: colors.navy,
+    route: '/stats/transactions',
+  },
+  { key: 'channel', label: 'Channel', chipColor: colors.purpleSoft, icon: ChannelIcon, iconColor: colors.purple, route: '/stats/channel' },
+  {
+    key: 'sales-revenue',
+    label: 'Sales Revenue',
+    chipColor: colors.coralSoft,
+    icon: SalesRevenueIcon,
+    iconColor: colors.coral,
+    route: '/stats/sales-revenue',
+  },
+  { key: 'metrics', label: 'Metrics', chipColor: colors.navySoft, icon: MetricsIcon, iconColor: colors.navy, route: '/stats/metrics' },
+  // Per FLOW.md, Quick Note is a separate, unrelated feature with no
+  // mockup yet — stays inert (matches the web app too, where it's a
+  // disabled "Coming soon" menu entry).
+  { key: 'quick-note', label: 'Quick Note', chipColor: colors.successSoft, icon: QuickNoteIcon, iconColor: colors.success, route: null },
 ];
 
 // This week's bar chart — matches design/design-reference/Statistics.html's
@@ -92,9 +111,10 @@ export default function StatisticsScreen() {
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
         <View style={styles.tileCard}>
           {TILES.map((tile) => (
-            // TODO(nav): none of these report screens exist in the design
-            // handoff yet, so each tile is inert until they're specced.
-            <Pressable key={tile.key} style={styles.tile} onPress={() => {}}>
+            <Pressable
+              key={tile.key}
+              style={styles.tile}
+              onPress={() => tile.route && router.push(tile.route as never)}>
               <View style={[styles.tileIcon, { backgroundColor: tile.chipColor }]}>
                 <tile.icon color={tile.iconColor} />
               </View>
