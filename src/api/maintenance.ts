@@ -20,6 +20,9 @@ export type MaintenanceTicketDto = {
   assignee?: string;
   description?: string;
   resolvedOn?: string;
+  // Only ever set alongside the request that actually moves `status` to
+  // RESOLVED — see updateTicket in businesslogic/maintenanceTicket.js.
+  resolutionNote?: string;
   createdAt: string;
   updatedAt: string;
 };
@@ -69,6 +72,9 @@ export type TicketPayload = {
   status?: TicketStatus;
   assignee?: string;
   description?: string;
+  // Only actually saved server-side when this same request's `status` is
+  // RESOLVED — see the model's own comment on why it's optional even then.
+  resolutionNote?: string;
 };
 
 export function createTicket(payload: TicketPayload) {

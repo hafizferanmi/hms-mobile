@@ -167,9 +167,9 @@ export default function MaintenanceTicketDetailScreen() {
   const statusMeta = STATUS_META[ticket.status];
   const priorityMeta = PRIORITY_META[ticket.priority];
 
-  async function handleConfirmAdvance() {
+  async function handleConfirmAdvance(resolutionNote?: string) {
     if (!pendingAdvance) return;
-    await advanceMutation.mutateAsync({ ticketId: pendingAdvance.ticket._id, status: pendingAdvance.nextStatus });
+    await advanceMutation.mutateAsync({ ticketId: pendingAdvance.ticket._id, status: pendingAdvance.nextStatus, resolutionNote });
     setPendingAdvance(null);
   }
 
@@ -238,6 +238,13 @@ export default function MaintenanceTicketDetailScreen() {
           <View style={styles.field}>
             <Text style={styles.infoLabel}>Description</Text>
             <Text style={styles.description}>{ticket.description}</Text>
+          </View>
+        )}
+
+        {!!ticket.resolutionNote && (
+          <View style={styles.field}>
+            <Text style={styles.infoLabel}>What was done</Text>
+            <Text style={styles.resolutionBox}>{ticket.resolutionNote}</Text>
           </View>
         )}
 
@@ -401,6 +408,15 @@ const styles = StyleSheet.create({
     fontSize: 13.5,
     lineHeight: 21,
     color: colors.textMuted,
+  },
+  resolutionBox: {
+    backgroundColor: colors.successSoft,
+    borderRadius: 12,
+    padding: 14,
+    fontFamily: fonts.body,
+    fontSize: 13.5,
+    lineHeight: 21,
+    color: colors.text,
   },
   activityBox: {
     backgroundColor: colors.bg,

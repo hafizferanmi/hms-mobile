@@ -55,8 +55,15 @@ export function useTicketLogs(ticketId: string) {
 export function useAdvanceTicketStatus() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: ({ ticketId, status }: { ticketId: string; status: TicketStatus }) =>
-      updateTicket(ticketId, { status }),
+    mutationFn: ({
+      ticketId,
+      status,
+      resolutionNote,
+    }: {
+      ticketId: string;
+      status: TicketStatus;
+      resolutionNote?: string;
+    }) => updateTicket(ticketId, resolutionNote ? { status, resolutionNote } : { status }),
     onSuccess: (updated) => {
       queryClient.invalidateQueries({ queryKey: ['maintenance-tickets'] });
       queryClient.setQueryData(['maintenance-ticket', updated._id], updated);

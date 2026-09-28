@@ -377,9 +377,9 @@ export default function MaintenanceScreen() {
     if (next) setPendingAdvance({ ticket, nextStatus: next });
   }
 
-  async function handleConfirmAdvance() {
+  async function handleConfirmAdvance(resolutionNote?: string) {
     if (!pendingAdvance) return;
-    await advanceMutation.mutateAsync({ ticketId: pendingAdvance.ticket._id, status: pendingAdvance.nextStatus });
+    await advanceMutation.mutateAsync({ ticketId: pendingAdvance.ticket._id, status: pendingAdvance.nextStatus, resolutionNote });
     setPendingAdvance(null);
   }
 

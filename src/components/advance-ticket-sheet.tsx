@@ -1,4 +1,5 @@
-import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { ActivityIndicator, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import Svg, { Path, Rect } from 'react-native-svg';
 
 import { ACTION_LABEL, STATUS_META, TICKET_STATUS_LABEL } from '@/constants/maintenance';
@@ -8,7 +9,13 @@ import type { MaintenanceTicketDto, TicketStatus } from '@/api/maintenance';
 
 // Mirrors OperationMaintenancePage/StatusChangeConfirmDialog.js — shown
 // before a ticket's status actually advances, from either the list row's
-// action button or the detail screen's, whichever triggered it.
+// action button or the detail screen's, whichever triggered it. Resolving
+// specifically now also asks what was done (MaintenanceTicket's
+// `resolutionNote` field, kept on the ticket and in its activity log) —
+// required there, same as web, since businesslogic/maintenanceTicket.js
+// only ever saves it on the request that actually moves a ticket to
+// RESOLVED.
+const NOTE_MAX_LENGTH = 1000;
 
 function WrenchIcon({ color }: { color: string }) {
   return (
@@ -45,14 +52,28 @@ export function AdvanceTicketSheet({
   ticket: MaintenanceTicketDto | null;
   nextStatus: TicketStatus | null;
   submitting: boolean;
-  onConfirm: () => void;
+  onConfirm: (resolutionNote?: string) => void;
   onCancel: () => void;
 }) {
+  const [note, setNote] = useState('');
+
+  // Re-seeds the note field each time this opens for a (possibly
+  // different) ticket — adjusted during render rather than in a
+  // useEffect, same pattern used for the filter sheet in maintenance.tsx.
+  const currentTicketId = ticket?._id ?? null;
+  const [prevTicketId, setPrevTicketId] = useState(currentTicketId);
+  if (currentTicketId !== prevTicketId) {
+    setPrevTicketId(currentTicketId);
+    setNote('');
+  }
+
   if (!visible || !ticket || !nextStatus) return null;
 
   const meta = STATUS_META[nextStatus];
   const Icon = nextStatus === 'RESOLVED' ? CheckCircleIcon : WrenchIcon;
   const actionLabel = ACTION_LABEL[ticket.status] ?? 'Advance';
+  const isResolving = nextStatus === 'RESOLVED';
+  const canConfirm = !submitting && (!isResolving || note.trim().length > 0);
 
   return (
     <>
@@ -74,11 +95,30 @@ export function AdvanceTicketSheet({
           <Text style={{ color: meta.color, fontFamily: fonts.bodyBold }}>{TICKET_STATUS_LABEL[nextStatus]}</Text>.
         </Text>
 
+        {isResolving && (
+          <View style={styles.noteField}>
+            <Text style={styles.noteLabel}>What was done?</Text>
+            <TextInput
+              value={note}
+              onChangeText={setNote}
+              maxLength={NOTE_MAX_LENGTH}
+              placeholder="e.g. Replaced the faulty AC capacitor and tested cooling"
+              placeholderTextColor={colors.textFaint}
+              multiline
+              autoFocus
+              style={styles.noteInput}
+            />
+          </View>
+        )}
+
         <View style={styles.actionsRow}>
           <Pressable style={styles.cancelButton} onPress={onCancel} disabled={submitting}>
             <Text style={styles.cancelButtonText}>Cancel</Text>
           </Pressable>
-          <Pressable style={styles.confirmButton} onPress={onConfirm} disabled={submitting}>
+          <Pressable
+            style={[styles.confirmButton, !canConfirm && styles.confirmButtonDisabled]}
+            onPress={() => onConfirm(isResolving ? note.trim() : undefined)}
+            disabled={!canConfirm}>
             {submitting ? <ActivityIndicator color="#FFFFFF" size="small" /> : <Text style={styles.confirmButtonText}>{actionLabel}</Text>}
           </Pressable>
         </View>
@@ -139,6 +179,31 @@ const styles = StyleSheet.create({
     fontFamily: fonts.bodyBold,
     color: colors.text,
   },
+  noteField: {
+    width: '100%',
+    marginBottom: 20,
+  },
+  noteLabel: {
+    fontFamily: fonts.bodyBold,
+    fontSize: 11.5,
+    color: colors.textMuted,
+    marginBottom: 7,
+    textAlign: 'left',
+  },
+  noteInput: {
+    width: '100%',
+    minHeight: 88,
+    borderWidth: 1.5,
+    borderColor: colors.border,
+    borderRadius: 10,
+    paddingHorizontal: 13,
+    paddingVertical: 11,
+    fontFamily: fonts.body,
+    fontSize: 13.5,
+    lineHeight: 19,
+    color: colors.text,
+    textAlignVertical: 'top',
+  },
   actionsRow: {
     flexDirection: 'row',
     gap: 10,
@@ -165,6 +230,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.navy,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  confirmButtonDisabled: {
+    opacity: 0.5,
   },
   confirmButtonText: {
     fontFamily: fonts.bodyBold,
